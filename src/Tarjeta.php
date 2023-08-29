@@ -3,7 +3,7 @@ namespace TrabajoSube;
 class Tarjeta{
     public $saldo;
 
-    private function __construct($sald=0){
+    public function __construct($sald=0){
       $this->saldo = $sald;
     }
 
