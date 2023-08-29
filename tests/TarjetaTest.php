@@ -11,4 +11,10 @@ class TarjetaTest extends TestCase{
         $tarje->agregarSaldo(200);
         $this->assertEquals($tarje->verSaldo(), 300);
     }
+
+    public function testMetodoConstruct() {
+        $saldoInicial = 50;
+        $tarje = new Tarjeta($saldoInicial);
+        $this->assertEquals($tarje->verSaldo(), $saldoInicial);
+    }
 }
