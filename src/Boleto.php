@@ -1,7 +1,10 @@
 <?php
 namespace TrabajoSube;
 class Boleto{
+  public $texto;
+  
   public Function mensaje($tarjeta){
-    echo "Boleto pagado! Se descuentan $120, tu saldo restante es: " . $tarjeta->saldo;
+    $this->texto = "Boleto pagado! Se descuentan $120, tu saldo restante es: " . $tarjeta->saldo";
+    echo $this->texto;
   }  
 }
