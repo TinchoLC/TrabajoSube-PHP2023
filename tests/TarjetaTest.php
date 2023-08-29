@@ -4,7 +4,7 @@ namespace TrabajoSube;
 
 use PHPUnit\Framework\TestCase;
 
-class ColectivoTest extends TestCase{
+class TarjetaTest extends TestCase{
 
     public function testAgregarSaldo(){  
         $tarje = new Tarjeta(100);
