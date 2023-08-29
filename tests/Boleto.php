@@ -8,6 +8,6 @@ class BoletoTest extends TestCase{
 
     public function testCargarDinero(){  
         $cole = new Tarjeta(100);
-        $this->assertEquals($Tarjeta->agregarSaldo(100), 200);
+        $this->assertEquals($Tarjeta->agregarSaldo(150), 250);
     }
 }
