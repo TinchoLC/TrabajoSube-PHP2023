@@ -12,7 +12,7 @@ class TarjetaTest extends TestCase{
         $this->assertEquals($tarje->verSaldo(), 300);
     }
 
-    public function testMetodoConstruct() {
+    public function test__construct() {
         $saldoInicial = 50;
         $tarje = new Tarjeta($saldoInicial);
         $this->assertEquals($tarje->verSaldo(), $saldoInicial);
