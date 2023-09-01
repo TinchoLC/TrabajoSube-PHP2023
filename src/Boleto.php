@@ -10,6 +10,6 @@ class Boleto{
 
   public Function verMensaje(){
     echo $this->texto;
-    return $this->True;
+    return $this->texto;
   }
 }
