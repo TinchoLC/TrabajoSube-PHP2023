@@ -1,9 +1,9 @@
 <?php
 namespace TrabajoSube;
 
-class Colectivo2{
+class Colectivo{
     public function pagarCon($tarjeta){
-        if ($tarjeta->saldo < 120){
+        if ($tarjeta->saldo > 120){
             $tarjeta->saldo-=120;
             $boletox = new Boleto();
             $boletox->mensaje($tarjeta);
