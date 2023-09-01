@@ -6,6 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase{
 
+    public function testVerSaldo(){  
+        $tarje = new Tarjeta(100);
+        $tarje->verSaldo(200);
+        $this->assertEquals($tarje->verSaldo(), 300);
+    }
+
     public function testAgregarSaldo(){  
         $tarje = new Tarjeta(100);
         $tarje->agregarSaldo(200);
