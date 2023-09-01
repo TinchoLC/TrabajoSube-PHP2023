@@ -5,10 +5,11 @@ class Boleto{
   
   public Function mensaje($tarjeta){
     $this->texto = "Boleto pagado! Se descuentan $120, tu saldo restante es: " . $tarjeta->saldo;
-    echo $this->texto;
+    return True;
   }  
 
   public Function verMensaje(){
     echo $this->texto;
+    return $this->texto;
   }
 }
