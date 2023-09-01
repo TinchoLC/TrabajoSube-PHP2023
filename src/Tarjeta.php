@@ -3,8 +3,11 @@ namespace TrabajoSube;
 class Tarjeta{
     public $saldo;
 
-    public function __construct($sald=0){
+    public $plus;
+
+    public function __construct($sald=0, $plu=2){
       $this->saldo = $sald;
+      $this->plus = $plu;
     }
 
     public function agregarSaldo($agregado){
