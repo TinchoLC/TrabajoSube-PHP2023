@@ -2,8 +2,9 @@
 namespace TrabajoSube;
 class Tarjeta{
     public $saldo;
-
     public $plus;
+    public $saldoMinimo = -211.84;
+    public $saldoMaximo = 6600;
 
     public function __construct($sald=0, $plu=2){
       $this->saldo = $sald;
@@ -11,7 +12,7 @@ class Tarjeta{
     }
 
     public function agregarSaldo($agregado){
-      if (($agregado + $this->saldo) > 6600){
+      if (($agregado + $this->saldo) > $saldoMaximo){
         echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Tu saldo actual es de " . $this->saldo;
         return false;
       } 
