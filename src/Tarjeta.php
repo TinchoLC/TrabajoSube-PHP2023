@@ -19,7 +19,7 @@ class Tarjeta{
       else if (($agregado >= 150 && $agregado <= 500 && $agregado % 50 == 0) || ($agregado >= 500 && $agregado <= 1500 && $agregado % 100 == 0) || ($agregado >= 1500 && $agregado <= 4000 && $agregado % 500 == 0)){
 
         if($this->plus == 1){
-          this->plus++;
+          this->plus+=1;
           $agregado-=120;
           echo "Pagaste 1 viaje plus";
         }
@@ -30,7 +30,7 @@ class Tarjeta{
             echo "Pagaste 2 viajes plus";
           }
           else{
-            this->plus++;
+            this->plus+=1;
             $agregado-=120;
             echo "Pagaste 1 viaje plus, adeudas 1";
           }
