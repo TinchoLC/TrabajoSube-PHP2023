@@ -12,7 +12,7 @@ class Tarjeta{
     }
 
     public function agregarSaldo($agregado){
-      if (($agregado + $this->saldo) > $saldoMaximo){
+      if (($agregado + $this->saldo) > $this->saldoMaximo){
         echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Tu saldo actual es de " . $this->saldo;
         return false;
       } 
