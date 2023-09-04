@@ -10,6 +10,7 @@ class Colectivo{
             return true;
         } 
         else {
+            echo("TARJETA SIN SALDO");
             return false;
         }
     }
