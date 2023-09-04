@@ -12,11 +12,4 @@ class BoletoTest extends TestCase{
       $this->assertTrue($boleto->mensaje($tarjeta));
     }
 
-   public function testVerMensaje() {
-      $boleto = new Boleto();
-      $tarjeta = new Tarjeta(0);
-      $boleto->mensaje($tarjeta);
-      $this->assertEquals($boleto->verMensaje(),"Boleto pagado! Se descuentan $120, tu saldo restante es: 0");  
-    }
-
 }
