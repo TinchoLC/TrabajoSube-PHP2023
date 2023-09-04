@@ -11,7 +11,7 @@ class ColectivoTest extends TestCase{
         $tarje = new Tarjeta($saldoInicial,0);
         $cole = new Colectivo();
         $this->assertTrue($cole->pagarCon($tarje));
-        $tarje2 = new Tarjeta(,0);
+        $tarje2 = new Tarjeta(-200,0);
         $this->assertFalse($cole->pagarCon($tarje2));
     }
 
