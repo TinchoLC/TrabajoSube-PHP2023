@@ -7,11 +7,11 @@ use PHPUnit\Framework\TestCase;
 class ColectivoTest extends TestCase{
     
     public function testPagarConDinero() {
-        $saldoInicial = 130;
-        $tarje = new Tarjeta($saldoInicial);
+        $tarje = new Tarjeta();
         $cole = new Colectivo();
         $this->assertTrue($cole->pagarCon($tarje));
-        $tarje2 = new Tarjeta(-200);
-        $this->assertFalse($cole->pagarCon($tarje2));
+        $this->assertEquals($tarje->verSaldo(),-120);
+        $this->assertFalse($cole->pagarCon($tarje)); // Aca tirara falso porque el saldo no puede llegar a -240, el minimo es menor.
+        $this->assertEquals($tarje->verSaldo(),-120);
     }
 }
