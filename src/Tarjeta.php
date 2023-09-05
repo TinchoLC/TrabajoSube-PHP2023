@@ -36,17 +36,4 @@ class Tarjeta{
     }
 }
 
-class FranquiciaParcial extends Tarjeta{
 
-    public function descontarSaldo(){
-      $this->saldo-=60;
-      return true;
-    }
-
-}
-class FranquiciaCompleta extends Tarjeta{
-
-    public function descontarSaldo(){
-      return true;
-    }
-}
