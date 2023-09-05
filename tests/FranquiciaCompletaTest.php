@@ -9,7 +9,7 @@ class FranquiciaCompletaTest extends TestCase{
     public function testDescontarSaldo(){
         $tarje = new FranquiciaCompleta();
         $tarje->DescontarSaldo();
-        this->AssertEquals($tarje->verSaldo(),0)
+        $this->AssertEquals($tarje->verSaldo(),0);
     }
 
 }
