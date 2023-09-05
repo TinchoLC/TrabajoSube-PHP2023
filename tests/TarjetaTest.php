@@ -30,7 +30,7 @@ class TarjetaTest extends TestCase{
     public function testDescontarSaldo(){
         $tarje = new Tarjeta(120);
         $tarje->DescontarSaldo();
-        $this->AssertEquals($tarje->verSaldo(),0)
+        $this->AssertEquals($tarje->verSaldo(),0);
     }
     
 }
