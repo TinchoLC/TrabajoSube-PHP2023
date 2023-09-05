@@ -29,11 +29,24 @@ class Tarjeta{
     public function verSaldo(){
       return $this->saldo;
     }
+
+    public function descontarSaldo(){
+      $this->saldo-=120;
+      return true;
+    }
 }
 
 class FranquiciaParcial extends Tarjeta{
 
+    public function descontarSaldo(){
+      $this->saldo-=60;
+      return true;
+    }
+
 }
 class FranquiciaCompleta extends Tarjeta{
 
+    public function descontarSaldo(){
+      return true;
+    }
 }
