@@ -30,3 +30,10 @@ class Tarjeta{
       return $this->saldo;
     }
 }
+
+class FranquiciaParcial extends Tarjeta{
+
+}
+class FranquiciaCompleta extends Tarjeta{
+
+}
