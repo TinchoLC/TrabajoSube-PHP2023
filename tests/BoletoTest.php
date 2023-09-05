@@ -16,7 +16,7 @@ class BoletoTest extends TestCase{
       $boleto = new Boleto();
       $tarjeta = new Tarjeta(0);
       $boleto->mensaje($tarjeta);
-      $this->assertEquals($boleto->verMensaje(), "Boleto pagado! tu saldo restante es: 0 y te quedan 2 viajes Plus");
+      $this->assertEquals($boleto->verMensaje(), "Boleto pagado! tu saldo restante es: 0");
     }
 
 }

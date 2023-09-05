@@ -2,13 +2,11 @@
 namespace TrabajoSube;
 class Tarjeta{
     public $saldo;
-    public $plus;
     public $saldoMinimo = -211.84;
     public $saldoMaximo = 6600;
 
-    public function __construct($sald=0, $plu=2){
+    public function __construct($sald=0){
       $this->saldo = $sald;
-      $this->plus = $plu;
     }
 
     public function agregarSaldo($agregado){
@@ -17,24 +15,6 @@ class Tarjeta{
         return false;
       } 
       else if (($agregado >= 150 && $agregado <= 500 && $agregado % 50 == 0) || ($agregado >= 500 && $agregado <= 1500 && $agregado % 100 == 0) || ($agregado >= 1500 && $agregado <= 4000 && $agregado % 500 == 0)){
-
-        if($this->plus == 1){
-          $this->plus+=1;
-          $agregado-=120;
-          echo "Pagaste 1 viaje plus";
-        }
-        if($this->plus == 0){
-          if($agregado>=240){
-            $this->plus = 2;
-            $agregado-=240;
-            echo "Pagaste 2 viajes plus";
-          }
-          else{
-            $this->plus+=1;
-            $agregado-=120;
-            echo "Pagaste 1 viaje plus, adeudas 1";
-          }
-        }
 
         $this->saldo += $agregado;
         echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;

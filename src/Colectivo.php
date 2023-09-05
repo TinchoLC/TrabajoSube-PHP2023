@@ -12,13 +12,6 @@ class Colectivo{
             $boletox->mensaje($tarjeta);
             return true;
         }
-        else if ($tarjeta->plus > 0){
-            $tarjeta->plus--;
-
-            $boletox = new Boleto();
-            $boletox->mensaje($tarjeta);
-            return true;
-        } 
         else {
             echo("TARJETA SIN SALDO");
             return false;
