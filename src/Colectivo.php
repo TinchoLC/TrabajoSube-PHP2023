@@ -5,6 +5,7 @@ class Colectivo{
     private $costoBoleto = 120;
 
     public function pagarCon($tarjeta){
+
         if (($tarjeta->saldo - $this->costoBoleto) > $tarjeta->saldoMinimo){
             $tarjeta->saldo-=$costoBoleto;
             $boletox = new Boleto();
@@ -13,6 +14,7 @@ class Colectivo{
         }
         else if ($tarjeta->plus > 0){
             $tarjeta->plus--;
+
             $boletox = new Boleto();
             $boletox->mensaje($tarjeta);
             return true;

@@ -50,4 +50,11 @@ class Tarjeta{
     public function verSaldo(){
       return $this->saldo;
     }
+
+    public function descontarSaldo(){
+      $this->saldo-=120;
+      return true;
+    }
 }
+
+
