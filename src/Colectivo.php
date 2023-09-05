@@ -2,12 +2,11 @@
 namespace TrabajoSube;
 
 class Colectivo{
-    private $costoBoleto = 120;
 
     public function pagarCon($tarjeta){
 
         if (($tarjeta->saldo - $this->costoBoleto) > $tarjeta->saldoMinimo){
-            $tarjeta->saldo-=$costoBoleto;
+            $tarjeta->descontarSaldo();
             $boletox = new Boleto();
             $boletox->mensaje($tarjeta);
             return true;
