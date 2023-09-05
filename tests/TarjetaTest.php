@@ -8,7 +8,6 @@ class TarjetaTest extends TestCase{
 
     public function testVerSaldo(){  
         $tarje = new Tarjeta(100);
-        $tarje->verSaldo();
         $this->assertEquals($tarje->verSaldo(), 100);
     }
 
