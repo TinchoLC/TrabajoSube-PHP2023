@@ -13,5 +13,11 @@ class ColectivoTest extends TestCase{
         $this->assertEquals($tarje->verSaldo(),-120);
         $this->assertFalse($cole->pagarCon($tarje)); // Aca tirara falso porque el saldo no puede llegar a -240, el minimo es menor.
         $this->assertEquals($tarje->verSaldo(),-120);
+        $parcial = new FranquiciaParcial();
+        $this->assertTrue($cole->pagarCon($parcial));
+        $this->assertEquals($parcial->verSaldo(),-60);
+        $completa = new FranquiciaCompleta();
+        $this->assertTrue($cole->pagarCon($completa));
+        $this->assertEquals($completa->verSaldo(),0);
     }
 }
