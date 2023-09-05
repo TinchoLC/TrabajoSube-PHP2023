@@ -26,5 +26,11 @@ class TarjetaTest extends TestCase{
         $tarje = new Tarjeta($saldoInicial);
         $this->assertEquals($tarje->verSaldo(), $saldoInicial);
     }
+
+    public function testDescontarSaldo(){
+        $tarje = new Tarjeta(120);
+        $tarje->DescontarSaldo();
+        this->AssertEquals($tarje->verSaldo(),0)
+    }
     
 }
