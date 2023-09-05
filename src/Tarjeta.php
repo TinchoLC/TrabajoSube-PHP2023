@@ -4,6 +4,7 @@ class Tarjeta{
     public $saldo;
     public $saldoMinimo = -211.84;
     public $saldoMaximo = 6600;
+    public $descuento = 120;
 
     public function __construct($sald=0){
       $this->saldo = $sald;
@@ -32,7 +33,7 @@ class Tarjeta{
     }
 
     public function descontarSaldo(){
-      $this->saldo-=120;
+      $this->saldo-=$this->descuento;
       return true;
     }
 }
