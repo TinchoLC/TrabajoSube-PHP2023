@@ -7,6 +7,7 @@ class Tarjeta{
     public $descuento = 120;
     public $id;
     public $tipo = 'Normal';
+    public $informeNegativoDeuda = false;
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -20,8 +21,13 @@ class Tarjeta{
       } 
       else if (($agregado >= 150 && $agregado <= 500 && $agregado % 50 == 0) || ($agregado >= 500 && $agregado <= 1500 && $agregado % 100 == 0) || ($agregado >= 1500 && $agregado <= 4000 && $agregado % 500 == 0)){
 
+        if($this->saldo < 0 && $this->saldo + $agregado > 0)
+          $informeNegativoDeuda = true;
         $this->saldo += $agregado;
         echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;
+
+
+
         return true;
 
       }

@@ -6,17 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 class BoletoTest extends TestCase{
 
-    public function testMensaje() {
-      $boleto = new Boleto();
-      $tarjeta = new Tarjeta(0);
-      $this->assertTrue($boleto->mensaje($tarjeta));
-    }
 
     public function testVerMensaje() {
-      $boleto = new Boleto();
-      $tarjeta = new Tarjeta(0);
-      $boleto->mensaje($tarjeta);
+      $boleto = new Boleto("Normal",911,"K",120,0,false);
       $this->assertEquals($boleto->verMensaje(), "Boleto pagado! tu saldo restante es: 0");
     }
+
+
 
 }
