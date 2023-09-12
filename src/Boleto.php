@@ -9,7 +9,6 @@ class Boleto{
   public $abonado;
   public $saldotarjeta;
   // public $descr;
-  public Function 
   
   public Function mensaje($tarjeta){
     $this->texto = "Boleto pagado! tu saldo restante es: " . $tarjeta->saldo;
