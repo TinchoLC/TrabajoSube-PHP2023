@@ -18,12 +18,14 @@ class BoletoTest extends TestCase{
       $tarjeta = new Tarjeta(500,2188);
       $colectivo = new Colectivo('122 Verde');
       $boleto = $colectivo->pagarCon($tarjeta);
+      $this->assertEquals(get_class($boleto),"Boleto");
+
       // ver que hacer con fecha
-      $this->assertEquals($boleto->tipotarjeta,"Normal");
-      $this->assertEquals($boleto->idtarjeta,2188);
-      $this->assertEquals($boleto->lineacolectivo,"122 Verde");
+      $this->assertEquals($boleto->tipoTarjeta,"Normal");
+      $this->assertEquals($boleto->idTarjeta,2188);
+      $this->assertEquals($boleto->lineaColectivo,"122 Verde");
       $this->assertEquals($boleto->abonado,120);
-      $this->assertEquals($boleto->saldotarjeta,380);
+      $this->assertEquals($boleto->saldoTarjeta,380);
       $this->assertEquals($boleto->descripcion,"Abona saldo: 120.");
     }
 

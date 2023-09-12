@@ -2,20 +2,20 @@
 namespace TrabajoSube;
 class Boleto{
   public $fecha;
-  public $tipotarjeta;
-  public $idtarjeta;
-  public $lineacolectivo;
+  public $tipoTarjeta;
+  public $idTarjeta;
+  public $lineaColectivo;
   public $abonado;
-  public $saldotarjeta;
+  public $saldoTarjeta;
   public $descripcion;
   
-  public Function __construct($ttarjet = '',$itarjet = '',$lcole = '',$ab = 120,$sald = 0,$bb = false){
+  public Function __construct($ttarjet,$itarjet,$lcole,$ab,$sald,$bb = false){
     $this->fecha = date('l jS \of F Y h:i:s A');
-    $this->$tipotarjeta = $ttarjet;
-    $this->idtarjeta = $itarjet;
-    $this->lineacolectivo = $lcole;
+    $this->$tipoTarjeta = $ttarjet;
+    $this->idTarjeta = $itarjet;
+    $this->lineaColectivo = $lcole;
     $this->abonado = $ab;
-    $this->saldotarjeta = $sald;
+    $this->saldoTarjeta = $sald;
 
     $this->descripcion = 'Abona saldo: ' . $ab . '.';
     if($bb)
