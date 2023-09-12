@@ -9,9 +9,7 @@ class BoletoTest extends TestCase{
 
     public function testVerMensaje() {
       $boleto = new Boleto("Normal",911,"K",120,0,false);
-      $this->assertEquals($boleto->verMensaje(), "Boleto pagado! tu saldo restante es: 0");
+      $this->assertEquals($boleto->verMensaje(), "Abona saldo 120.");
     }
-
-
 
 }
