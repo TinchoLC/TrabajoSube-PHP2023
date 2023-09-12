@@ -20,11 +20,11 @@ class Colectivo{
             }
             $boletox = new Boleto($tarjeta->tipo,$tarjeta->id,$this->linea,$tarjeta->descuento,$tarjeta->saldo,$boolband);
             $boolband = false;
-            return true;
+            return $boletox;
         }
         else {
             echo("TARJETA SIN SALDO");
-            return false;
+            return NULL;
         }
     }
 
