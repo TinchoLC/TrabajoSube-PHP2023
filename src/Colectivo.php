@@ -12,7 +12,7 @@ class Colectivo{
     public function pagarCon($tarjeta){
         if (($tarjeta->saldo - $tarjeta->descuento) > $tarjeta->saldoMinimo){
             $tarjeta->descontarSaldo();
-            
+
             if($tarjeta->informeNegativoDeuda)
             {
                 $boolband = true;
@@ -20,8 +20,6 @@ class Colectivo{
             }
             $boletox = new Boleto($tarjeta->tipo,$tarjeta->id,$this->linea,$tarjeta->descuento,$tarjeta->saldo,$boolband);
             $boolband = false;
-
-            $boletox->mensaje($tarjeta);
             return true;
         }
         else {
