@@ -4,10 +4,10 @@ namespace TrabajoSube;
 
 use PHPUnit\Framework\TestCase;
 
-class FranquiciaCompletaTest extends TestCase{
+class FranquiciaCompletaJUBTest extends TestCase{
     
     public function testDescontarSaldo(){
-        $tarje = new FranquiciaCompleta();
+        $tarje = new FranquiciaCompletaJUB();
         $tarje->DescontarSaldo();
         $this->AssertEquals($tarje->verSaldo(),0);
     }

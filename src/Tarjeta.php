@@ -5,9 +5,12 @@ class Tarjeta{
     public $saldoMinimo = -211.84;
     public $saldoMaximo = 6600;
     public $descuento = 120;
+    public $id;
+    public $tipo = 'Normal';
 
-    public function __construct($sald=0){
+    public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
+      $this->id = $idd;
     }
 
     public function agregarSaldo($agregado){
