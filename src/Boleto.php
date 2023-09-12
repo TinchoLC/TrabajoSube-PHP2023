@@ -19,7 +19,7 @@ class Boleto{
 
     $this->descripcion = 'Abona saldo: ' . $ab . '.';
     if($bb)
-      $this->descripcion += ' Se cancela el saldo negativo.';
+      $this->descripcion = $this->descripcion . ' Se cancela el saldo negativo.';
   }
 
   public Function verMensaje(){
