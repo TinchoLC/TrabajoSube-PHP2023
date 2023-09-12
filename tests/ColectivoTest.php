@@ -16,8 +16,11 @@ class ColectivoTest extends TestCase{
         $parcial = new FranquiciaParcial();
         $this->assertTrue($cole->pagarCon($parcial));
         $this->assertEquals($parcial->verSaldo(),-60);
-        $completa = new FranquiciaCompleta();
-        $this->assertTrue($cole->pagarCon($completa));
-        $this->assertEquals($completa->verSaldo(),0);
+        $completaJ = new FranquiciaCompletaJUB();
+        $this->assertTrue($cole->pagarCon($completaJ));
+        $this->assertEquals($completaJ->verSaldo(),0);
+        $completaB = new FranquiciaCompletaBEG();
+        $this->assertTrue($cole->pagarCon($completaB));
+        $this->assertEquals($completaB->verSaldo(),0);
     }
 }
