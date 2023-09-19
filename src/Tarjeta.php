@@ -49,6 +49,7 @@ class Tarjeta{
           }
           else {
             $this->saldo-= ($this->descuento - $this->cargaPendiente);
+            $this->cargaPendiente = 0;
           }
         }
         else{
