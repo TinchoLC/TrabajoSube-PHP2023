@@ -9,9 +9,9 @@ class Boleto{
   public $saldoTarjeta;
   public $descripcion;
   
-  public Function __construct($ttarjet,$itarjet,$lcole,$ab,$sald,$bb = false){
+  public Function __construct($ttarjet = '',$itarjet = 0,$lcole = '',$ab = 0,$sald = 0,$bb = false){
     $this->fecha = date('l jS \of F Y h:i:s A');
-    $this->$tipoTarjeta = $ttarjet;
+    $this->tipoTarjeta = $ttarjet;
     $this->idTarjeta = $itarjet;
     $this->lineaColectivo = $lcole;
     $this->abonado = $ab;
