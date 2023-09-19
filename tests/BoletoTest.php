@@ -18,7 +18,7 @@ class BoletoTest extends TestCase{
       $tarjeta = new Tarjeta(500,2188);
       $colectivo = new Colectivo('122 Verde');
       $boleto = $colectivo->pagarCon($tarjeta);
-      $this->assertEquals(get_class($boleto),"Boleto");
+      $this->assertEquals(get_class($boleto),"TrabajoSube\Boleto");
 
       // ver que hacer con fecha
       $this->assertEquals($boleto->tipoTarjeta,"Normal");
