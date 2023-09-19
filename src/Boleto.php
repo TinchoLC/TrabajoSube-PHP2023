@@ -22,6 +22,7 @@ class Boleto{
       $this->descripcion = $this->descripcion . ' Se cancela el saldo negativo.';
   }
 
+  //esta funcion es para ver el mensaje
   public Function verMensaje(){
     echo $this->descripcion;
     return $this->descripcion;
