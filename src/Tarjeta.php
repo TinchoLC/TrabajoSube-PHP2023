@@ -8,6 +8,7 @@ class Tarjeta{
     public $id;
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
+    public $cargaPendiente = 0;
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -16,7 +17,9 @@ class Tarjeta{
 
     public function agregarSaldo($agregado){
       if (($agregado + $this->saldo) > $this->saldoMaximo){
-        echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Tu saldo actual es de " . $this->saldo;
+        $this->cargaPendiente += ($agregado) - ($this->saldoMaximo - $this->saldo);
+        $this->saldo = $saldoMaximo;
+        echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Asi que tienes " . $this->cargaPendiente . " de carga pendiente.";
         return false;
       } 
       else if (($agregado >= 150 && $agregado <= 500 && $agregado % 50 == 0) || ($agregado >= 500 && $agregado <= 1500 && $agregado % 100 == 0) || ($agregado >= 1500 && $agregado <= 4000 && $agregado % 500 == 0)){
@@ -41,8 +44,15 @@ class Tarjeta{
       return $this->saldo;
     }
 
-    public function descontarSaldo(){
-      $this->saldo-=$this->descuento;
+    public function descontarSaldo(){ 
+        if($this->cargaPendiente > 0){
+          if($this->cargaPendiente >= $this->descuento){
+            $this->cargaPendiente -= $this->descuento; 
+          }
+          else {
+            $this->saldo-= ($this->descuento + $this->cargaPendiente);
+          }
+        }
       return true;
     }
 }
