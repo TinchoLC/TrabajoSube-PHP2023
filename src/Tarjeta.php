@@ -18,7 +18,7 @@ class Tarjeta{
     public function agregarSaldo($agregado){
       if (($agregado + $this->saldo) > $this->saldoMaximo){
         $this->cargaPendiente += ($agregado) - ($this->saldoMaximo - $this->saldo);
-        $this->saldo = $saldoMaximo;
+        $this->saldo = $this->saldoMaximo;
         echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Asi que tienes " . $this->cargaPendiente . " de carga pendiente.";
         return false;
       } 
@@ -28,8 +28,6 @@ class Tarjeta{
           $this->informeNegativoDeuda = true;
         $this->saldo += $agregado;
         echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;
-
-
 
         return true;
 
