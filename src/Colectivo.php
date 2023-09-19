@@ -4,7 +4,7 @@ namespace TrabajoSube;
 class Colectivo{
     public $linea;
     
-    private $boolband = false;
+    protected $boolband = false;
     public function __construct($line = "M Verde"){
       $this->linea = $line;
     }
@@ -15,11 +15,11 @@ class Colectivo{
 
             if($tarjeta->informeNegativoDeuda)
             {
-                $boolband = true;
+                $this->boolband = true;
                 $tarjeta->informeNegativoDeuda = false;
             }
-            $boletox = new Boleto($tarjeta->tipo,$tarjeta->id,$this->linea,$tarjeta->descuento,$tarjeta->saldo,$boolband);
-            $boolband = false;
+            $boletox = new Boleto($tarjeta->tipo,$tarjeta->id,$this->linea,$tarjeta->descuento,$tarjeta->saldo,$this->boolband);
+            $this->boolband = false;
             return $boletox;
         }
         else {
