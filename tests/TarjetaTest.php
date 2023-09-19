@@ -42,8 +42,10 @@ class TarjetaTest extends TestCase{
 
     public function test__construct() {
         $saldoInicial = 50;
-        $tarje = new Tarjeta($saldoInicial);
+        $idInicial = 144;
+        $tarje = new Tarjeta($saldoInicial,$idInicial);
         $this->assertEquals($tarje->verSaldo(), $saldoInicial);
+        $this->assertEquals($tarje->id, $idInicial);
     }
 
     public function testDescontarSaldo(){
