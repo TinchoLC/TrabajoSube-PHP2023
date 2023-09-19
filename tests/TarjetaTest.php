@@ -23,6 +23,23 @@ class TarjetaTest extends TestCase{
         $this->assertFalse($tarje2->agregarSaldo(37));
     }
 
+    public function testCargaPendiente(){
+        $tarje = new Tarjeta(6000);
+        $tarjeta->agregarSaldo(800);
+        $this->assertEquals($tarje->verSaldo(),6600);
+        $this->assertEquals($tarje->cargaPendiente,200);
+
+        $cole = new Colectivo('107 Rojo');
+        $cole->pagarCon($tarje);
+        $this->assertEquals($tarje->verSaldo(),6600);
+        $this->assertEquals($tarje->cargaPendiente,80);
+
+        $cole->pagarCon($tarje);
+        $this->assertEquals($tarje->verSaldo(),6560);
+        $this->assertEquals($tarje->cargaPendiente,0);
+
+    }
+
     public function test__construct() {
         $saldoInicial = 50;
         $tarje = new Tarjeta($saldoInicial);
