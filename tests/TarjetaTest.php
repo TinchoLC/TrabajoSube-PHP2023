@@ -25,7 +25,7 @@ class TarjetaTest extends TestCase{
 
     public function testCargaPendiente(){
         $tarje = new Tarjeta(6000);
-        $tarjeta->agregarSaldo(800);
+        $tarje->agregarSaldo(800);
         $this->assertEquals($tarje->verSaldo(),6600);
         $this->assertEquals($tarje->cargaPendiente,200);
 
