@@ -70,10 +70,9 @@ class Tarjeta{
       $marca = time();
       if (count($viajeshoy) > 0){
         if(!mismoDia($marca,$viajeshoy[1])){
-          $viajeshoy = [$marca];
+          $viajeshoy = [];
         }
       }
-      else
         array_push($viajeshoy,$marca);
     }
 }
