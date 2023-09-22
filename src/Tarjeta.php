@@ -9,7 +9,7 @@ class Tarjeta{
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
-    public $viajeshoy;
+    public $viajeshoy = [];
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
