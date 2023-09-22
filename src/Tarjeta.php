@@ -59,7 +59,7 @@ class Tarjeta{
     }
 
     private function mismoDia($a,$b){
-      return floor($a/86400) - floor($b/86400) == 0;
+      return floor($a/86400) == floor($b/86400);
     }
     public function marcaViaje(){
       $marca = time();
