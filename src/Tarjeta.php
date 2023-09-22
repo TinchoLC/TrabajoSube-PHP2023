@@ -42,7 +42,7 @@ class Tarjeta{
       return $this->saldo;
     }
 
-    public function descontarSaldo(){ 
+     protected function descuentoSaldo(){
         if($this->cargaPendiente > 0){
           if($this->cargaPendiente >= $this->descuento){
             $this->cargaPendiente -= $this->descuento; 
@@ -57,8 +57,13 @@ class Tarjeta{
         }
       return true;
     }
-
-    private function mismoDia($a,$b){
+    
+    public function descontarSaldo(){ 
+        descuentoSaldo();
+        marcaViaje();
+    }
+   
+    protected function mismoDia($a,$b){
       return floor($a/86400) == floor($b/86400);
     }
     public function marcaViaje(){
