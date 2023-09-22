@@ -9,6 +9,7 @@ class Tarjeta{
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
+    public $viajeshoy;
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -55,6 +56,20 @@ class Tarjeta{
           $this->saldo-=$this->descuento;
         }
       return true;
+    }
+
+    private function mismoDia($a,$b){
+      return floor($a/86400) - floor($b/86400) == 0;
+    }
+    public function marcaViaje(){
+      $marca = time();
+      if (count($viajeshoy) > 0){
+        if(!mismoDia($marca,$viajeshoy[1])){
+          $viajeshoy = [$marca];
+        }
+      }
+      else
+        array_push($viajeshoy,$marca);
     }
 }
 
