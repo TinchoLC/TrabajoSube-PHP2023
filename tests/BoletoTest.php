@@ -43,7 +43,6 @@ class BoletoTest extends TestCase{
       $this->assertEquals($boleto->abonado,120);
       $this->assertEquals($boleto->saldoTarjeta,280);
       $this->assertEquals($boleto->descripcion,"Abona saldo: 120. Se cancela el saldo negativo.");
-
     }
 
 }
