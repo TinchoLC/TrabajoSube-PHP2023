@@ -77,7 +77,6 @@ class Tarjeta{
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
             	$this->viajeshoy = [];
         }
-
       return 120;
     }
 

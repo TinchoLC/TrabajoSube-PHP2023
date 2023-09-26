@@ -52,6 +52,10 @@ class TarjetaTest extends TestCase{
         $tarje = new Tarjeta(120);
         $tarje->DescontarSaldo();
         $this->AssertEquals($tarje->verSaldo(),0);
+
+        $tarje->agregarTiempoFalso(100000);
+        $tarje->DescontarSaldo();
+        $this->AssertEquals($tarje->verSaldo(),-120);
     }
     
 }
