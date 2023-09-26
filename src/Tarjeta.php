@@ -59,8 +59,9 @@ class Tarjeta{
     }
     
     public function descontarSaldo(){ 
-        $this->marcaViaje();
-        return $this->descuentoSaldo($this->cuantoDescuento());
+      $descontado = $this->descuentoSaldo($this->cuantoDescuento(true));
+      $this->marcaViaje();
+      return $descontado;
     }
    
     protected function mismoDia($a,$b){
@@ -71,9 +72,9 @@ class Tarjeta{
       array_push($this->viajeshoy,$marca);
     }
 
-    public function cuantoDescuento(){
+    public function cuantoDescuento($pagar){
       $marca = $this->timx();
-        if (count($this->viajeshoy) > 1) {
+        if (count($this->viajeshoy) > 0) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
             	$this->viajeshoy = [];
         }
