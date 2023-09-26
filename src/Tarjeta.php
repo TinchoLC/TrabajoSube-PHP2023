@@ -64,7 +64,7 @@ class Tarjeta{
     }
    
     protected function mismoDia($a,$b){
-      return floor($a/86400) == floor($b/86400);
+      return date("l jS \of F Y", $a) == date("l jS \of F Y", $b);
     }
     public function marcaViaje(){
       $marca = $this->timx();
