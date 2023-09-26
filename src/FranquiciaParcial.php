@@ -8,4 +8,3 @@ class FranquiciaParcial extends Tarjeta{
     return 60;
   }
 }
-}
