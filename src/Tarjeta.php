@@ -67,12 +67,12 @@ class Tarjeta{
       return floor($a/86400) == floor($b/86400);
     }
     public function marcaViaje(){
-      $marca = timx();
+      $marca = $this->timx();
       array_push($this->viajeshoy,$marca);
     }
 
     public function cuantoDescuento(){
-      $marca = timx();
+      $marca = $this->timx();
         if (count($this->viajeshoy) > 1) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
             	$this->viajeshoy = [];
