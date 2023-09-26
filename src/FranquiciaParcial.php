@@ -13,7 +13,7 @@ class FranquiciaParcial extends Tarjeta{
             $this->medioBoletoPorDia = 0;
           }
           else{
-            if($marca - end($this->viajeshoy) > (5*60)){
+            if($marca - end($this->viajeshoy) > (5*60) && $this->medioBoletoPorDia<4){
               $this->medioBoletoPorDia++;
               return 60;
             }
