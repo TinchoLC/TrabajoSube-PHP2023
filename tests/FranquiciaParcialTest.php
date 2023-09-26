@@ -17,6 +17,7 @@ class FranquiciaParcialTest extends TestCase{
         $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),3820);
         $tarje->agregarTiempoFalso(1000); // Mas de 5 minutos
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),3760);
     }
 

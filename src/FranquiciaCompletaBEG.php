@@ -4,7 +4,7 @@ namespace TrabajoSube;
 class FranquiciaCompletaBEG extends Tarjeta{
     public $tipo = 'FranquiciaBoletoEducativo';
 
-    public function cuantoDescuento(){
+    public function cuantoDescuento($pagar){
         $marca = $this->timx();
         if (count($this->viajeshoy) > 1) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))

@@ -10,7 +10,7 @@ class Colectivo{
     }
     
     public function pagarCon($tarjeta){
-        if (($tarjeta->saldo - $tarjeta->cuantoDescuento()) > $tarjeta->saldoMinimo){
+        if (($tarjeta->saldo - $tarjeta->cuantoDescuento(false)) > $tarjeta->saldoMinimo){
             $descontado = $tarjeta->descontarSaldo();
 
             if($tarjeta->informeNegativoDeuda)

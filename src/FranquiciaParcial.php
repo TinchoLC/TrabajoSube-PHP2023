@@ -5,7 +5,7 @@ class FranquiciaParcial extends Tarjeta{
   public $tipo = 'FranquiciaParcial';
   public $medioBoletoPorDia = 0;
 
-  public function cuantoDescuento(){
+  public function cuantoDescuento($pagar){
     $marca = $this->timx();
         if (count($this->viajeshoy) > 1) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1])){
@@ -14,7 +14,8 @@ class FranquiciaParcial extends Tarjeta{
           }
           else{
             if($marca - end($this->viajeshoy) > (5*60) && $this->medioBoletoPorDia<4){
-              $this->medioBoletoPorDia++;
+              if ($pagar)
+                $this->medioBoletoPorDia++;
               return 60;
             }
             else{ 
@@ -22,7 +23,8 @@ class FranquiciaParcial extends Tarjeta{
             }
           }
         }
-    $this->medioBoletoPorDia++;
+    if ($pagar)
+      $this->medioBoletoPorDia++;
     return 60;
   }
 }
