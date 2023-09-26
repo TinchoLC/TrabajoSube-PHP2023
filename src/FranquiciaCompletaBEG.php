@@ -5,9 +5,11 @@ class FranquiciaCompletaBEG extends Tarjeta{
     public $tipo = 'FranquiciaBoletoEducativo';
 
     public function cuantoDescuento(){
-        $marca = time();
-        if (count($this->viajeshoy) > 1 && !$this->mismoDia($marca,$this->viajeshoy[1]))
-            $this->viajeshoy = [];
+        $marca = timx();
+        if (count($this->viajeshoy) > 1) {
+        	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
+            	$this->viajeshoy = [];
+        }
 
         if(count($this->viajeshoy) > 3)
             return 120;
