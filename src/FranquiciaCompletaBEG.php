@@ -4,11 +4,16 @@ namespace TrabajoSube;
 class FranquiciaCompletaBEG extends Tarjeta{
     public $tipo = 'FranquiciaBoletoEducativo';
 
-    public function descontarSaldo(){ 
-        if ($this->marcaViaje() > 2)
-            return $this->descuentoSaldo(120);
-        else 
-            return $this->descuentoSaldo(0);
-        
-    }
+    public function cuantoDescuento(){
+        $marca = time();
+        if (count($this->viajeshoy) > 0 && !$this->mismoDia($marca,$this->viajeshoy[1]))
+            $this->viajeshoy = [];
+
+        if(count($this->viajeshoy) > 2)
+            return 120;
+        else
+            return 0; 
+      }
+
+      
 }

@@ -59,7 +59,7 @@ class Tarjeta{
     
     public function descontarSaldo(){ 
         $this->marcaViaje();
-        return $this->descuentoSaldo(120);
+        return $this->descuentoSaldo($this->cuantoDescuento());
     }
    
     protected function mismoDia($a,$b){
@@ -73,7 +73,10 @@ class Tarjeta{
         }
       }
         array_push($this->viajeshoy,$marca);
-        return count($this->viajeshoy);
+    }
+
+    public function cuantoDescuento(){
+      return 120;
     }
 }
 
