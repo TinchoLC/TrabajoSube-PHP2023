@@ -59,8 +59,9 @@ class Tarjeta{
     }
     
     public function descontarSaldo(){ 
-        $this->marcaViaje();
-        return $this->descuentoSaldo($this->cuantoDescuento(true));
+      $descontado = $this->descuentoSaldo($this->cuantoDescuento(true));
+      $this->marcaViaje();
+      return $descontado;
     }
    
     protected function mismoDia($a,$b){
