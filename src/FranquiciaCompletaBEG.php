@@ -11,7 +11,7 @@ class FranquiciaCompletaBEG extends Tarjeta{
             	$this->viajeshoy = [];
         }
 
-        if(count($this->viajeshoy) > 3)
+        if(count($this->viajeshoy) > 2)
             return 120;
         else
             return 0; 

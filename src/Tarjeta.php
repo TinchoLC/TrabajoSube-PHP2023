@@ -82,10 +82,10 @@ class Tarjeta{
     }
 
     public function agregarTiempoFalso($ag){
-      $tiempofalsoagregado+=$ag;
+      $this->tiempofalsoagregado+=$ag;
     }
     public function timx(){
-      return time() + $tiempofalsoagregado;
+      return time() + $this->tiempofalsoagregado;
     }
 }
 
