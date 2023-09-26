@@ -2,6 +2,10 @@
 namespace TrabajoSube;
 
 class FranquiciaParcial extends Tarjeta{
-  public $descuento = 60;
   public $tipo = 'FranquiciaParcial';
+  
+  public function descontarSaldo(){ 
+    $this->descuentoSaldo(60);
+    $this->marcaViaje();
+}
 }

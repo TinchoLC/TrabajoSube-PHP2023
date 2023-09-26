@@ -4,7 +4,6 @@ class Tarjeta{
     public $saldo;
     public $saldoMinimo = -211.84;
     public $saldoMaximo = 6600;
-    public $descuento = 120;
     public $id;
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
@@ -42,24 +41,24 @@ class Tarjeta{
       return $this->saldo;
     }
 
-     protected function descuentoSaldo(){
+     protected function descuentoSaldo($descuento){
         if($this->cargaPendiente > 0){
-          if($this->cargaPendiente >= $this->descuento){
-            $this->cargaPendiente -= $this->descuento; 
+          if($this->cargaPendiente >= $descuento){
+            $this->cargaPendiente -= $descuento; 
           }
           else {
-            $this->saldo-= ($this->descuento - $this->cargaPendiente);
+            $this->saldo-= ($descuento - $this->cargaPendiente);
             $this->cargaPendiente = 0;
           }
         }
         else{
-          $this->saldo-=$this->descuento;
+          $this->saldo-=$descuento;
         }
       return true;
     }
     
     public function descontarSaldo(){ 
-        $this->descuentoSaldo();
+        $this->descuentoSaldo(120);
         $this->marcaViaje();
     }
    
@@ -74,6 +73,7 @@ class Tarjeta{
         }
       }
         array_push($this->viajeshoy,$marca);
+        return count($this->viajeshoy);
     }
 }
 

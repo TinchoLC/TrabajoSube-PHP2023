@@ -10,7 +10,7 @@ class Boleto{
   public $descripcion;
   
   public Function __construct($ttarjet = '',$itarjet = 0,$lcole = '',$ab = 0,$sald = 0,$bb = false){
-    $this->fecha = date('l jS \of F Y h:i:s A');
+    $this->fecha = date('l jS \of F Y h:i:s A', time());
     $this->tipoTarjeta = $ttarjet;
     $this->idTarjeta = $itarjet;
     $this->lineaColectivo = $lcole;
