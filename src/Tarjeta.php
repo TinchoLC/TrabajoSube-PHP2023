@@ -67,12 +67,7 @@ class Tarjeta{
     }
     public function marcaViaje(){
       $marca = time();
-      if (count($this->viajeshoy) > 0){
-        if(!$this->mismoDia($marca,$this->viajeshoy[1])){
-          $this->viajeshoy = [];
-        }
-      }
-        array_push($this->viajeshoy,$marca);
+      array_push($this->viajeshoy,$marca);
     }
 
     public function cuantoDescuento(){
