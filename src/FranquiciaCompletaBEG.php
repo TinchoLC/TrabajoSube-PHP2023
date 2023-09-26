@@ -6,9 +6,9 @@ class FranquiciaCompletaBEG extends Tarjeta{
 
     public function descontarSaldo(){ 
         if ($this->marcaViaje() > 2)
-            $this->descuentoSaldo(120);
+            return $this->descuentoSaldo(120);
         else 
-            $this->descuentoSaldo(0);
+            return $this->descuentoSaldo(0);
         
     }
 }

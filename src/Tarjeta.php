@@ -54,12 +54,12 @@ class Tarjeta{
         else{
           $this->saldo-=$descuento;
         }
-      return true;
+      return $descuento;
     }
     
     public function descontarSaldo(){ 
-        $this->descuentoSaldo(120);
         $this->marcaViaje();
+        return $this->descuentoSaldo(120);
     }
    
     protected function mismoDia($a,$b){
