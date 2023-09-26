@@ -4,11 +4,12 @@ class Tarjeta{
     public $saldo;
     public $saldoMinimo = -211.84;
     public $saldoMaximo = 6600;
-    public $descuento = 120;
     public $id;
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
+    public $viajeshoy = [];
+    public $tiempofalsoagregado = 0;
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -41,20 +42,49 @@ class Tarjeta{
       return $this->saldo;
     }
 
-    public function descontarSaldo(){ 
+     protected function descuentoSaldo($descuento){
         if($this->cargaPendiente > 0){
-          if($this->cargaPendiente >= $this->descuento){
-            $this->cargaPendiente -= $this->descuento; 
+          if($this->cargaPendiente >= $descuento){
+            $this->cargaPendiente -= $descuento; 
           }
           else {
-            $this->saldo-= ($this->descuento - $this->cargaPendiente);
+            $this->saldo-= ($descuento - $this->cargaPendiente);
             $this->cargaPendiente = 0;
           }
         }
         else{
-          $this->saldo-=$this->descuento;
+          $this->saldo-=$descuento;
         }
-      return true;
+      return $descuento;
+    }
+    
+    public function descontarSaldo(){ 
+        $this->marcaViaje();
+        return $this->descuentoSaldo($this->cuantoDescuento());
+    }
+   
+    protected function mismoDia($a,$b){
+      return floor($a/86400) == floor($b/86400);
+    }
+    public function marcaViaje(){
+      $marca = $this->timx();
+      array_push($this->viajeshoy,$marca);
+    }
+
+    public function cuantoDescuento(){
+      $marca = $this->timx();
+        if (count($this->viajeshoy) > 1) {
+        	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
+            	$this->viajeshoy = [];
+        }
+      return 120;
+    }
+
+    public function agregarTiempoFalso($ag){
+      $this->tiempofalsoagregado+=$ag;
+    }
+    public function timx(){
+      return time() + $this->tiempofalsoagregado;
     }
 }
 

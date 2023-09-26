@@ -2,6 +2,15 @@
 namespace TrabajoSube;
 
 class FranquiciaCompletaJUB extends Tarjeta{
-    public $descuento = 0;
     public $tipo = 'FranquiciaJubilados';
+
+    public function cuantoDescuento(){
+        $marca = $this->timx();
+        if (count($this->viajeshoy) > 1) {
+        	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
+            	$this->viajeshoy = [];
+        }
+
+        return 0;
+      }
 }
