@@ -74,7 +74,7 @@ class Tarjeta{
 
     public function cuantoDescuento($pagar){
       $marca = $this->timx();
-        if (count($this->viajeshoy) > 0) {
+        if (count($this->viajeshoy) > 0o) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
             	$this->viajeshoy = [];
         }
