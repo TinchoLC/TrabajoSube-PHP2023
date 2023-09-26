@@ -99,8 +99,7 @@ Al utilizar una tarjeta de tipo boleto educativo gratuito se pueden realizar has
 Las tarjetas SUBE cuentan con el boleto de uso frecuente. Este es un beneficio que aplica un descuento al monto del boleto dependiendo de cuántos viajes se hagan.
 - Del viaje 1 al 29: Tarifa normal.
 - Del viaje 30 al 79: 20% de descuento.
-- Del viaje 79 al 80: 25% de descuento.
-- Del viaje 81 en adelante: Tarifa normal.
+- Del viaje 80 en adelante: 25% de descuento.
 
 La cantidad de viajes se cuenta del 1 al 30 de cada mes. Este beneficio se aplicará *sólo* sobre las tarjetas normales.
 Implementar esta nueva funcionalidad.
@@ -121,3 +120,12 @@ En nuestra ciudad existen diversas líneas de colectivo. Algunas solo viajan den
 - La tarifa interurbana es de: $184.
 
 Las líneas de colectivo interurbanas admiten todas las franquicias y siguen los mismos criterios que las líneas de colectivo urbanas.
+
+## Entrega (17/10).
+En la fecha pactada comenzará la defensa y devolución del trabajo realizado. Para la entrega se pide y se va a considerar:
+
+- Todas las iteraciones completas.
+- Un mínimo de 80% de cobertura de código.
+- El correcto funcionamiento del código.
+- Uso de git.
+
