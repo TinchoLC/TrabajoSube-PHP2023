@@ -1,7 +1,6 @@
 # Trabajo Sube 2023:
 El siguiente trabajo es un enunciado iterativo. Todas las semanas nuevos requerimientos serán agregados y/o modificados para ilustrar la dinámica de desarrollo de software.
 
-
 Este trabajo está siendo realizado por: Martin Cabrera (TinchoLC) y Lucas Lamberti (Eljovenpatamuslo) 
 ## Iteración 1. (Completa)
 
