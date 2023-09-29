@@ -3,7 +3,7 @@ El siguiente trabajo es un enunciado iterativo. Todas las semanas nuevos requeri
 
 
 Este trabajo está siendo realizado por: Martin Cabrera (TinchoLC) y Lucas Lamberti (Eljovenpatamuslo) 
-## Iteración 1.
+## Iteración 1. (Completa)
 
 Escribir un programa con programación orientada a objetos que permita ilustrar el funcionamiento del transporte urbano de pasajeros de la ciudad de Rosario.
 
@@ -45,7 +45,7 @@ Si se agregan nuevas clases al código tal vez sea necesario correr:
 composer dump-autoload
 ```
 
-## Iteración 2.
+## Iteración 2. (Completa)
 Para esta iteración hay 3 tareas principales. Crear un [issue](https://docs.github.com/es/issues/tracking-your-work-with-issues/creating-an-issue) en github copiando la descripción de cada tarea y completar cada uno en una rama diferente. Éstas serán mergeadas al validar, luego de una revisión cruzada (de ambos integrantes del grupo), que todo el código tiene sentido y está correctamente implementado. Ademas deberan configurar Github Actions.
 
 No es necesario que todo el código para un issue esté funcionando al 100% antes de mergiarlo, pueden crear pull requests que solucionen algún item particular del problema para avanzar más rápido.
@@ -72,7 +72,7 @@ IMPORTANTE: Como punto de control, alguna de estas dos funcionalidades: "Viaje p
 - Escribir un test que valide que una tarjeta de FranquiciaCompleta siempre puede pagar un boleto.
 - Escribir un test que valide que el monto del boleto pagado con medio boleto es siempre la mitad del normal.
 
-## Iteracion 3
+## Iteracion 3 (Completa)
 Al igual que la iteración anterior, se pide mantener la mecánica de trabajo para ir añadiendo las nuevas funcionalidades y/o modificaciones (issue, una rama específica para cada tarea y finalmente el mergeo cuando todo funcione correctamente..., etc.)
 En esta iteración daremos una introducción a la manipulación de fechas y horarios. Éstos serán necesarios en esta oportunidad para realizar las modificaciones pedidas. Consultar este video para conocer más sobre el manejo de fechas y horas en PHP: https://www.youtube.com/watch?v=dVRl1kqxdwY
 
