@@ -1,6 +1,8 @@
 # Trabajo Sube 2023:
 El siguiente trabajo es un enunciado iterativo. Todas las semanas nuevos requerimientos serán agregados y/o modificados para ilustrar la dinámica de desarrollo de software.
 
+
+Este trabajo está siendo realizado por: Martin Cabrera (TinchoLC) y Lucas Lamberti (Eljovenpatamuslo) 
 ## Iteración 1.
 
 Escribir un programa con programación orientada a objetos que permita ilustrar el funcionamiento del transporte urbano de pasajeros de la ciudad de Rosario.
