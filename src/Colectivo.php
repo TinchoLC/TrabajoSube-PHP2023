@@ -8,7 +8,8 @@ class Colectivo{
     public function __construct($line = "M Verde"){
       $this->linea = $line;
     }
-    
+
+    // Esta funcion sirve para pagar con una tarjeta en especifico    
     public function pagarCon($tarjeta){
         if (($tarjeta->saldo - $tarjeta->cuantoDescuento(false)) > $tarjeta->saldoMinimo){
             $descontado = $tarjeta->descontarSaldo();
