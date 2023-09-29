@@ -18,7 +18,7 @@ class Boleto{
     $this->saldoTarjeta = $sald;
 
     $this->descripcion = 'Abona saldo: ' . $ab . '.';
-    if($bb)
+    if($bb) // Esto revisa el booleano sobre si en la ultima carga antes de este pago el saldo dejo de ser negativo
       $this->descripcion = $this->descripcion . ' Se cancela el saldo negativo.';
   }
 
