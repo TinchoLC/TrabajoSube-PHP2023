@@ -8,28 +8,30 @@ class FranquiciaCompletaBEGTest extends TestCase{
 
     public function testTerceraVezPaga(){
         $tarje = new FranquiciaCompletaBEG();
+        $cole = new Colectivo();
 
-        $tarje->DescontarSaldo();
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
 
-        $tarje->DescontarSaldo();
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
 
-        $tarje->DescontarSaldo();
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),-120);
     }
 
     public function testDistintosdias(){
         $tarje = new FranquiciaCompletaBEG();
+        $cole = new Colectivo();
 
-        $tarje->DescontarSaldo();
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
 
-        $tarje->DescontarSaldo();
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
 
         $tarje->agregarTiempoFalso(100000);
-        $tarje->DescontarSaldo();
+        $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
     }
 
