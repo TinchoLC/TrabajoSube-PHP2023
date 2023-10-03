@@ -8,11 +8,11 @@ class FranquiciaCompletaJUBTest extends TestCase{
     
     public function testDescontarSaldo(){
         $tarje = new FranquiciaCompletaJUB();
-        $tarje->DescontarSaldo();
+        $tarje->DescontarSaldo(1000);
         $this->AssertEquals($tarje->verSaldo(),0);
 
         $tarje->agregarTiempoFalso(100000);
-        $tarje->DescontarSaldo();
+        $tarje->DescontarSaldo(120);
         $this->AssertEquals($tarje->verSaldo(),0);
     }
 
