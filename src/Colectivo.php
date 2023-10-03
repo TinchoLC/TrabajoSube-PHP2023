@@ -3,6 +3,7 @@ namespace TrabajoSube;
 
 class Colectivo{
     public $linea;
+    public $precioBoleto = 120;
     
     protected $boolband = false;
     public function __construct($line = "M Verde"){
@@ -11,8 +12,8 @@ class Colectivo{
 
     // Esta funcion sirve para pagar con una tarjeta en especifico, casos explicados en la funcion
     public function pagarCon($tarjeta){
-        if (($tarjeta->saldo - $tarjeta->cuantoDescuento(false)) > $tarjeta->saldoMinimo){ // Si se puede pagar con el saldo actual
-            $descontado = $tarjeta->descontarSaldo(); 
+        if (($tarjeta->saldo - $tarjeta->cuantoDescuento($this->precioBoleto, false)) > $tarjeta->saldoMinimo){ // Si se puede pagar con el saldo actual
+            $descontado = $tarjeta->descontarSaldo($this->precioBoleto); 
 
             if($tarjeta->informeNegativoDeuda) // Si la tarjeta tenia el booleano que informa que salio de negativo como positivo lo pone en falso y pone el del colectivo como positivo
             {

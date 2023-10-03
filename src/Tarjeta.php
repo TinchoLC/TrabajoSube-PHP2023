@@ -62,8 +62,8 @@ class Tarjeta{
     }
     
     // Esta funcion descuenta el saldo con la funcion  descuentoSaldo y ademas marca el viaje en los viajes de hoy
-    public function descontarSaldo(){ 
-      $descontado = $this->descuentoSaldo($this->cuantoDescuento(true));
+    public function descontarSaldo($precio){ 
+      $descontado = $this->descuentoSaldo($this->cuantoDescuento($precio,true));
       $this->marcaViaje();
       return $descontado;
     }
@@ -83,13 +83,13 @@ class Tarjeta{
     // para informar si vas a efectuar el pago o solo estas consultando.
     // Ademas, revisa si el dia en el que estas consultando o pagando es el mismo de los que hay registros
     // Si es el mismo no hace nada, si no es el mismo, borra los registros porque entiende que es un nuevo dia.
-    public function cuantoDescuento($pagar){
+    public function cuantoDescuento($precio,$pagar){
       $marca = $this->timx();
         if (count($this->viajeshoy) > 0) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
             	$this->viajeshoy = [];
         }
-      return 120;
+      return $precio;
     }
 
     // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian
