@@ -9,7 +9,7 @@ class BoletoTest extends TestCase{
 
     public function testVerMensaje() {
       $BoletoQueNOTeniaSaldoNegativo = new Boleto("Normal",911,"K",120,0,false);
-      $this->assertEquals($BoletoQueNoTeniaSaldoNegativo->verMensaje(), "Abona saldo: 120.");
+      $this->assertEquals($BoletoQueNOTeniaSaldoNegativo->verMensaje(), "Abona saldo: 120.");
       $BoletoQueSITeniaSaldoNegativo = new Boleto("Normal",911,"K",120,0,true);
       $this->assertEquals($BoletoQueSITeniaSaldoNegativo->verMensaje(), "Abona saldo: 120. Se cancela el saldo negativo.");
     }
