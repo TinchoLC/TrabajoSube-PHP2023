@@ -83,7 +83,7 @@ class TarjetaTest extends TestCase{
         // 1720 - (120 * 0.75) = 1720 - 90 = 1630
         $this->AssertEquals($TarjetaUsoFrecuenteMensual->verSaldo(),1630);
 
-        $TarjetaUsoFrecuenteMensual->agregarTiempoFalso(10000000); // mas de un mes
+        $TarjetaUsoFrecuenteMensual->agregarTiempoFalso(115200); // mas de un mes
         $ColeUsoFrecuenteMensual->pagarCon($TarjetaUsoFrecuenteMensual); // boleto sin descuento, el primero del mes
         // 1630 - 120 = 1510
         $this->AssertEquals($TarjetaUsoFrecuenteMensual->verSaldo(),1510);
