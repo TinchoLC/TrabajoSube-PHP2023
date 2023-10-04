@@ -7,23 +7,23 @@ use PHPUnit\Framework\TestCase;
 class ColectivoTest extends TestCase{
     
     public function testPagarConDinero() {
-        $tarje = new Tarjeta();
-        $cole = new Colectivo();
-        $this->assertEquals(get_class($cole->pagarCon($tarje)),get_class(new Boleto()));
-        $this->assertEquals($tarje->verSaldo(),-120);
-        $this->assertEquals($cole->pagarCon($tarje),NULL); // el saldo no puede llegar a -240, el minimo es menor.
-        $this->assertEquals($tarje->verSaldo(),-120);
+        $tarjetaConMenorValor = new Tarjeta();
+        $colectivoUsadoParaLasDistintiasTarjetas = new Colectivo();
+        $this->assertEquals(get_class($colectivoUsado->pagarCon($tarjetaConMenorValor)),get_class(new Boleto()));
+        $this->assertEquals($tarjetaConMenorValor->verSaldo(),-120);
+        $this->assertEquals($colectivoUsado->pagarCon($tarjetaConMenorValor),NULL); // el saldo no puede llegar a -240, el minimo es menor.
+        $this->assertEquals($tarjetaConMenorValor->verSaldo(),-120);
         
-        $parcial = new FranquiciaParcial();
-        $cole->pagarCon($parcial);
-        $this->assertEquals($parcial->verSaldo(),-60);
+        $tarjetaFranquiciaParcial = new FranquiciaParcial();
+        $colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaFranquiciaParcial);
+        $this->assertEquals($tarjetaFranquiciaParcial->verSaldo(),-60);
 
-        $completaJ = new FranquiciaCompletaJUB();
-        $cole->pagarCon($completaJ);
-        $this->assertEquals($completaJ->verSaldo(),0);
+        $tarjetaFranquiciaCompletaJUB = new FranquiciaCompletaJUB();
+        $colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaFranquiciaCompletaJUB);
+        $this->assertEquals($tarjetaFranquiciaCompletaJUB->verSaldo(),0);
 
-        $completaB = new FranquiciaCompletaBEG();
-        $cole->pagarCon($completaB);
-        $this->assertEquals($completaB->verSaldo(),0);
+        $tarjetaFranquiciaCompletaBEG = new FranquiciaCompletaBEG();
+        $colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaFranquiciaCompletaBEG);
+        $this->assertEquals($tarjetaFranquiciaCompletaBEG->verSaldo(),0);
     }
 }
