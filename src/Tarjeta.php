@@ -9,6 +9,7 @@ class Tarjeta{
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
     public $viajeshoy = [];
+    public $viajesmes = [];
     public $tiempofalsoagregado = 0;
 
     public function __construct($sald=0,$idd = 0){
@@ -72,11 +73,15 @@ class Tarjeta{
     protected function mismoDia($a,$b){
       return date("l jS \of F Y", $a) == date("l jS \of F Y", $b);
     }
+    protected function mismoMes($a, $b){
+      return date("F Y", $a) == date("F Y", $b);
+    }
 
     // Esta funcion marca un viaje en los viajes de hoy
     public function marcaViaje(){
       $marca = $this->timx();
       array_push($this->viajeshoy,$marca);
+      array_push($this->viajesmes,$marca);
     }
 
     // Esta funcion informa cuanto debes pagar. Le debes agregar un booleano 
@@ -84,12 +89,22 @@ class Tarjeta{
     // Ademas, revisa si el dia en el que estas consultando o pagando es el mismo de los que hay registros
     // Si es el mismo no hace nada, si no es el mismo, borra los registros porque entiende que es un nuevo dia.
     public function cuantoDescuento($precio,$pagar){
-      $marca = $this->timx();
+        $marca = $this->timx();
         if (count($this->viajeshoy) > 0) {
         	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
             	$this->viajeshoy = [];
         }
-      return $precio;
+        if (count($this->viajesmes) > 0) {
+            if(!$this->mismoMes($marca,$this->viajesmes[1]))
+                $this->viajesmes = [];
+        }
+
+        if (count($this->viajesmes) < 29) 
+            return $precio;
+        else if (count($this->viajesmes) < 79)
+            return $precio * 0.8;
+        else 
+            return $precio * 0.75;
     }
 
     // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian
