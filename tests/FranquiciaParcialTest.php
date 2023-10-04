@@ -28,7 +28,7 @@ class FranquiciaParcialTest extends TestCase{
         $TajertoFranquiciaParcialPagarHastaCuatroVeces = new FranquiciaParcial();
         $TajertoFranquiciaParcialPagarHastaCuatroVeces->SetearTiempoFalsoTests;
         $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarSaldo(4000);
-        
+
         $ColectivoPagarHastaCuatroVeces = new Colectivo();
 
         $VecesQuePagamos = 0;
@@ -39,7 +39,7 @@ class FranquiciaParcialTest extends TestCase{
         }
         $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3640); // 4 viajes medioboleto y 1 normal
 
-        $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(10000000);
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(90000);
         $ColectivoPagarHastaCuatroVeces->pagarCon($TajertoFranquiciaParcialPagarHastaCuatroVeces);
         $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3580);
 
