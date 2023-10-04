@@ -13,7 +13,7 @@ class FranquiciaCompletaJUBTest extends TestCase{
         $TarjetaFranquiciaCompletaJUBDescontarSaldo->DescontarSaldo(1000);
         $this->AssertEquals($TarjetaFranquiciaCompletaJUBDescontarSaldo->verSaldo(),0);
 
-        $TarjetaFranquiciaCompletaJUBDescontarSaldo->agregarTiempoFalso(10000000);
+        $TarjetaFranquiciaCompletaJUBDescontarSaldo->agregarTiempoFalso(90000);
         $TarjetaFranquiciaCompletaJUBDescontarSaldo->DescontarSaldo(120);
         $this->AssertEquals($TarjetaFranquiciaCompletaJUBDescontarSaldo->verSaldo(),0);
     }

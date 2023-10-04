@@ -25,7 +25,7 @@ class FranquiciaCompletaBEGTest extends TestCase{
     public function testDistintosdias(){
         $TarjetaFranquiciaCompletaBEGPDistintosDias = new FranquiciaCompletaBEG();
         $TarjetaFranquiciaCompletaBEGPDistintosDias->SetearTiempoFalsoTests;
-        
+
         $ColectivoFranquiciaCompletaBEGDistintosDias = new Colectivo();
 
         $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);
@@ -34,7 +34,7 @@ class FranquiciaCompletaBEGTest extends TestCase{
         $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);
         $this->AssertEquals($TarjetaFranquiciaCompletaBEGPDistintosDias->verSaldo(),0);
 
-        $TarjetaFranquiciaCompletaBEGPDistintosDias->agregarTiempoFalso(10000000);
+        $TarjetaFranquiciaCompletaBEGPDistintosDias->agregarTiempoFalso(90000);
         $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);
         $this->AssertEquals($TarjetaFranquiciaCompletaBEGPDistintosDias->verSaldo(),0);
     }
