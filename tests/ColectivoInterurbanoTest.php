@@ -11,8 +11,8 @@ class ColectivoInterurbanoTest extends TestCase{
         $TarjetaInterurbano->SetearTiempoFalsoTests();
 
         $colectivoInterurbano = new ColectivoInterurbano();
-        $colectivoInterurbano->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->verSaldo(),0);
+        $colectivoInterurbano->pagarCon($TarjetaInterurbano);
+        $this->assertEquals($TarjetaInterurbano->verSaldo(),0);
 
     }
 }
