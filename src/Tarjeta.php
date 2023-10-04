@@ -120,7 +120,7 @@ class Tarjeta{
     function IsDiasCorrecto($TiempoActual){
       $DiaActual = date('l',$TiempoActual);
       $TiempoActual = date('h:i:s',$TiempoActual);
-      return (($DiaActual != "Saturday" and $DiaActual != "Sunday") && ($TiempoActual >= '06:00:00' && $TiempoActual <= '22:00:00'));
+      return (($DiaActual != "Saturday" && $DiaActual != "Sunday") && ($TiempoActual >= '06:00:00' && $TiempoActual <= '22:00:00'));
     }
 
 }
