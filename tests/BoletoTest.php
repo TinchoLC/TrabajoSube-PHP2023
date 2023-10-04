@@ -37,12 +37,12 @@ class BoletoTest extends TestCase{
       $this->assertEquals(get_class($BoletoInformeNegativo),"TrabajoSube\Boleto");
 
         // ver que hacer con fecha
-      $this->assertEquals($TarjetaConSaldoNegativo->tipoTarjeta,"Normal");
-      $this->assertEquals($TarjetaConSaldoNegativo->idTarjeta,1000);
-      $this->assertEquals($TarjetaConSaldoNegativo->lineaColectivo,"Expreso Andino");
-      $this->assertEquals($TarjetaConSaldoNegativo->abonado,120);
-      $this->assertEquals($TarjetaConSaldoNegativo->saldoTarjeta,280);
-      $this->assertEquals($TarjetaConSaldoNegativo->descripcion,"Abona saldo: 120. Se cancela el saldo negativo.");
+      $this->assertEquals($BoletoInformeNegativo->tipoTarjeta,"Normal");
+      $this->assertEquals($BoletoInformeNegativo->idTarjeta,1000);
+      $this->assertEquals($BoletoInformeNegativo->lineaColectivo,"Expreso Andino");
+      $this->assertEquals($BoletoInformeNegativo->abonado,120);
+      $this->assertEquals($BoletoInformeNegativo->saldoTarjeta,280);
+      $this->assertEquals($BoletoInformeNegativo->descripcion,"Abona saldo: 120. Se cancela el saldo negativo.");
     }
 
 }
