@@ -11,6 +11,9 @@ class FranquiciaParcial extends Tarjeta{
     // Si es el mismo no hace nada, si no es el mismo, borra los registros porque entiende que es un nuevo dia.
   public function cuantoDescuento($precio, $pagar){
     $marca = $this->timx();
+    if(! $this->IsDiasCorrecto($this->timx())){
+      return 0;
+    }
 
     if (count($this->viajesmes) > 0) {
         if(!$this->mismoMes($marca,$this->viajesmes[1]))
