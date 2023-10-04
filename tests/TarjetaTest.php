@@ -15,8 +15,8 @@ class TarjetaTest extends TestCase{
         $ValoresPermitidosDeCarga = [150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000];
         for ($PosicionActual = 0; $PosicionActual < Count($ValoresPermitidosDeCarga); $PosicionActual++){
             $TarjetaAgregarSaldoPermitido = new Tarjeta();
-            $this->assertTrue($TarjetaAgregarSaldoPermitido->agregarSaldo($ValoresPermitidosDeCarga[$i]));
-            $this->assertEquals($TarjetaAgregarSaldoPermitido->verSaldo(), $ValoresPermitidosDeCarga[$i]);
+            $this->assertTrue($TarjetaAgregarSaldoPermitido->agregarSaldo($ValoresPermitidosDeCarga[$PosicionActual]));
+            $this->assertEquals($TarjetaAgregarSaldoPermitido->verSaldo(), $ValoresPermitidosDeCarga[$PosicionActual]);
         }
         $TarjetaAgregarSaldoNoPermitido = new Tarjeta(6000);
         $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(4000));
