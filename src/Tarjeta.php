@@ -112,9 +112,15 @@ class Tarjeta{
     public function agregarTiempoFalso($ag){
       $this->tiempofalsoagregado+=$ag;
     }
+
     public function timx(){
       return time() + $this->tiempofalsoagregado;
     }
+
+    function IsDiasCorrecto($DiaActual, $TiempoActual){
+      return (($DiaActual != "Saturday" and $DiaActual != "Sunday") && ($TiempoActual >= '06:00:00' && $TiempoActual <= '22:00:00'));
+    }
+
 }
 
 
