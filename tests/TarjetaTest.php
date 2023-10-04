@@ -60,20 +60,20 @@ class TarjetaTest extends TestCase{
         // 100000 - (120 * 29) = 10000 - 3480 = 6520
         $this->AssertEquals($tarje->verSaldo(),6520); 
 
-        for ($i = 0; $i < 49; $i++){ // del 30 al 79 (siguientes 49)
+        for ($i = 29; $i < 79; $i++){ // del 30 al 79 (siguientes 50)
             $cole->pagarCon($tarje);
         }
-        // 6520 - (120 * 0.8 * 49) = 6520 - 4704 = 1816
-        $this->AssertEquals($tarje->verSaldo(),1816);
+        // 6520 - (120 * 0.8 * 50) = 6520 - 4800 = 1720
+        $this->AssertEquals($tarje->verSaldo(),1720);
 
         $cole->pagarCon($tarje); // Este boleto al ser el 80 debe tener 25% de descuento
-        // 1816 - (120 * 0.75) = 1816 - 90 = 1726
-        $this->AssertEquals($tarje->verSaldo(),1726);
+        // 1720 - (120 * 0.75) = 1720 - 90 = 1630
+        $this->AssertEquals($tarje->verSaldo(),1630);
 
         $tarje->agregarTiempoFalso(10000000); // mas de un mes
         $cole->pagarCon($tarje); // boleto sin descuento, el primero del mes
-        // 1726 - 120 = 1606
-        $this->AssertEquals($tarje->verSaldo(),1606);
+        // 1630 - 120 = 1510
+        $this->AssertEquals($tarje->verSaldo(),1510);
     }
     
 }
