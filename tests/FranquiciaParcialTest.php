@@ -34,7 +34,6 @@ class FranquiciaParcialTest extends TestCase{
             $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(1000); // Mas de 5 minutos
             $VecesQuePagamos++;
         }
-        echo $TajertoFranquiciaParcialPagarHastaCuatroVeces->timx();
         $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3640); // 4 viajes medioboleto y 1 normal
 
         $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(10000000);
