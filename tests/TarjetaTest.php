@@ -54,13 +54,13 @@ class TarjetaTest extends TestCase{
         $tarje = new Tarjeta(10000);
         $cole = new Colectivo('102/144');
 
-        for ($i = 0; i < 29; $i++){ // primeros 29
+        for ($i = 0; $i < 29; $i++){ // primeros 29
             $cole->pagarCon($tarje);
         }
         // 100000 - (120 * 29) = 10000 - 3480 = 6520
         $this->AssertEquals($tarje->verSaldo(),6520); 
 
-        for ($i = 0; i < 49; $i++){ // del 30 al 79 (siguientes 49)
+        for ($i = 0; $i < 49; $i++){ // del 30 al 79 (siguientes 49)
             $cole->pagarCon($tarje);
         }
         // 6520 - (120 * 0.8 * 49) = 6520 - 4704 = 1816
