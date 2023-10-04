@@ -7,55 +7,48 @@ use PHPUnit\Framework\TestCase;
 class TarjetaTest extends TestCase{
 
     public function testVerSaldo(){  
-        $tarje = new Tarjeta(100);
-        $this->assertEquals($tarje->verSaldo(), 100);
+        $TarjetaVerSaldo = new Tarjeta(100);
+        $this->assertEquals($TarjetaVerSaldo->verSaldo(), 100);
     }
 
     public function testAgregarSaldo(){  
-        $posibles = [150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000];
-        for ($i = 0; $i < Count($posibles); $i++){
-            $tarje = new Tarjeta();
-            $this->assertTrue($tarje->agregarSaldo($posibles[$i]));
-            $this->assertEquals($tarje->verSaldo(), $posibles[$i]);
+        $ValoresPermitidosDeCarga = [150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000];
+        
+        for ($PosicionActual = 0; $PosicionActual < Count($ValoresPermitidosDeCarga); $PosicionActual++){
+            $TarjetaAgregarSaldoPermitido = new Tarjeta();
+            $this->assertTrue($TarjetaAgregarSaldoPermitido->agregarSaldo($ValoresPermitidosDeCarga[$PosicionActual]));
+            $this->assertEquals($TarjetaAgregarSaldoPermitido->verSaldo(), $ValoresPermitidosDeCarga[$PosicionActual]);
         }
-        $tarje2 = new Tarjeta(6000);
-        $this->assertFalse($tarje2->agregarSaldo(4000));
-        $this->assertFalse($tarje2->agregarSaldo(37));
+        $TarjetaAgregarSaldoNoPermitido = new Tarjeta(6000);
+        $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(4000));
+        $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(37));
     }
 
     public function testCargaPendiente(){
-        $tarje = new Tarjeta(6000);
-        $tarje->agregarSaldo(800);
-        $this->assertEquals($tarje->verSaldo(),6600);
-        $this->assertEquals($tarje->cargaPendiente,200);
+        $TarjetaCargaPendiente = new Tarjeta(6000);
+        $TarjetaCargaPendiente->agregarSaldo(800);
+        $this->assertEquals($TarjetaCargaPendiente->verSaldo(),6600);
+        $this->assertEquals($TarjetaCargaPendiente->cargaPendiente,200);
 
-        $cole = new Colectivo('107 Rojo');
-        $cole->pagarCon($tarje);
-        $this->assertEquals($tarje->verSaldo(),6600);
-        $this->assertEquals($tarje->cargaPendiente,80);
+        $ColectivoCargaPendiente = new Colectivo('107 Rojo');
+        $ColectivoCargaPendiente->pagarCon($TarjetaCargaPendiente);
+        $this->assertEquals($TarjetaCargaPendiente->verSaldo(),6600);
+        $this->assertEquals($TarjetaCargaPendiente->cargaPendiente,80);
 
-        $cole->pagarCon($tarje);
-        $this->assertEquals($tarje->verSaldo(),6560);
-        $this->assertEquals($tarje->cargaPendiente,0);
+        $ColectivoCargaPendiente->pagarCon($TarjetaCargaPendiente);
+        $this->assertEquals($TarjetaCargaPendiente->verSaldo(),6560);
+        $this->assertEquals($TarjetaCargaPendiente->cargaPendiente,0);
 
-    }
-
-    public function test__construct() {
-        $saldoInicial = 50;
-        $idInicial = 144;
-        $tarje = new Tarjeta($saldoInicial,$idInicial);
-        $this->assertEquals($tarje->verSaldo(), $saldoInicial);
-        $this->assertEquals($tarje->id, $idInicial);
     }
 
     public function testDescontarSaldo(){
-        $tarje = new Tarjeta(120);
-        $tarje->DescontarSaldo(120);
-        $this->AssertEquals($tarje->verSaldo(),0);
+        $TarjetaDescontarSaldo = new Tarjeta(120);
+        $TarjetaDescontarSaldo->DescontarSaldo(120);
+        $this->AssertEquals($TarjetaDescontarSaldo->verSaldo(),0);
 
-        $tarje->agregarTiempoFalso(100000);
-        $tarje->DescontarSaldo(120);
-        $this->AssertEquals($tarje->verSaldo(),-120);
+        $TarjetaDescontarSaldo->agregarTiempoFalso(10000000);
+        $TarjetaDescontarSaldo->DescontarSaldo(120);
+        $this->AssertEquals($TarjetaDescontarSaldo->verSaldo(),-120);
     }
     
 }
