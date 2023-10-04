@@ -8,8 +8,9 @@ class Tarjeta{
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
-    public $viajeshoy = [];
-    public $viajesmes = [];
+    
+    protected $viajeshoy = [];
+    private $viajesmes = [];
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -89,10 +90,7 @@ class Tarjeta{
     // Si es el mismo no hace nada, si no es el mismo, borra los registros porque entiende que es un nuevo dia.
     public function cuantoDescuento($precio,$pagar){
         $marca = $this->timx();
-        if (count($this->viajeshoy) > 0) {
-        	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
-            	$this->viajeshoy = [];
-        }
+
         if (count($this->viajesmes) > 0) {
             if(!$this->mismoMes($marca,$this->viajesmes[1]))
                 $this->viajesmes = [];
@@ -125,7 +123,7 @@ class Tarjeta{
         if ($this->tiemporeal)
             return time() + $this->tiempofalsoagregado;
         else 
-            return 1672542000 + $this->tiempofalsoagregado;
+            return 1682910000 + $this->tiempofalsoagregado;
     }
 
     public function falsearTiempo(){
