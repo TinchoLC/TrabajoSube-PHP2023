@@ -11,7 +11,7 @@ class FranquiciaCompletaJUBTest extends TestCase{
         $tarje->DescontarSaldo(1000);
         $this->AssertEquals($tarje->verSaldo(),0);
 
-        $tarje->agregarTiempoFalso(100000);
+        $tarje->agregarTiempoFalso(10000000);
         $tarje->DescontarSaldo(120);
         $this->AssertEquals($tarje->verSaldo(),0);
     }

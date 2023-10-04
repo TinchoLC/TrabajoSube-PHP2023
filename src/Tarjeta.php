@@ -98,7 +98,13 @@ class Tarjeta{
             if(!$this->mismoMes($marca,$this->viajesmes[1]))
                 $this->viajesmes = [];
         }
-        return $precio;
+
+        if (count($this->viajesmes) < 30) 
+            return $precio;
+        else if (count($this->viajesmes) < 80)
+            return $precio / 1.2;
+        else 
+            return $precio / 1.25;
     }
 
     // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian

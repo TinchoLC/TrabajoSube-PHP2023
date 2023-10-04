@@ -30,7 +30,7 @@ class FranquiciaCompletaBEGTest extends TestCase{
         $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
 
-        $tarje->agregarTiempoFalso(100000);
+        $tarje->agregarTiempoFalso(10000000);
         $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),0);
     }
