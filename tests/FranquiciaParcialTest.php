@@ -8,6 +8,7 @@ class FranquiciaParcialTest extends TestCase{
     
     public function testCincoMinutos(){
         $TarjetaFranquiciaParcialPasadosCincoMinutos = new FranquiciaParcial();
+        $TarjetaFranquiciaParcialPasadosCincoMinutos->SetearTiempoFalsoTests;
         $TarjetaFranquiciaParcialPasadosCincoMinutos->agregarSaldo(4000);
         $ColectivoCincoMinutos = new Colectivo();
 
@@ -25,7 +26,9 @@ class FranquiciaParcialTest extends TestCase{
 
     public function testPagarHastaCuatroVecesAntesDeCobrarBoletoNormal(){
         $TajertoFranquiciaParcialPagarHastaCuatroVeces = new FranquiciaParcial();
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces->SetearTiempoFalsoTests;
         $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarSaldo(4000);
+        
         $ColectivoPagarHastaCuatroVeces = new Colectivo();
 
         $VecesQuePagamos = 0;

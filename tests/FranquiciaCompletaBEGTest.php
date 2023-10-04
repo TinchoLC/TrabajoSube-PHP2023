@@ -8,6 +8,8 @@ class FranquiciaCompletaBEGTest extends TestCase{
 
     public function testTerceraVezPaga(){
         $TarjetaFranquiciaCompletaBEGPagandoTresVeces = new FranquiciaCompletaBEG();
+        $TarjetaFranquiciaCompletaBEGPagandoTresVeces->SetearTiempoFalsoTests;
+
         $ColectivoFranquiciaCompletaBEGPagandoTresVeces = new Colectivo();
 
         $ColectivoFranquiciaCompletaBEGPagandoTresVeces->pagarCon($TarjetaFranquiciaCompletaBEGPagandoTresVeces);
@@ -22,6 +24,8 @@ class FranquiciaCompletaBEGTest extends TestCase{
 
     public function testDistintosdias(){
         $TarjetaFranquiciaCompletaBEGPDistintosDias = new FranquiciaCompletaBEG();
+        $TarjetaFranquiciaCompletaBEGPDistintosDias->SetearTiempoFalsoTests;
+        
         $ColectivoFranquiciaCompletaBEGDistintosDias = new Colectivo();
 
         $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);

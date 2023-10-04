@@ -8,6 +8,7 @@ class TarjetaTest extends TestCase{
 
     public function testVerSaldo(){  
         $TarjetaVerSaldo = new Tarjeta(100);
+        $TarjetaVerSaldo->SetearTiempoFalsoTests();
         $this->assertEquals($TarjetaVerSaldo->verSaldo(), 100);
     }
 
@@ -16,16 +17,21 @@ class TarjetaTest extends TestCase{
         
         for ($PosicionActual = 0; $PosicionActual < Count($ValoresPermitidosDeCarga); $PosicionActual++){
             $TarjetaAgregarSaldoPermitido = new Tarjeta();
+            $TarjetaAgregarSaldoPermitido->SetearTiempoFalsoTests();
+
             $this->assertTrue($TarjetaAgregarSaldoPermitido->agregarSaldo($ValoresPermitidosDeCarga[$PosicionActual]));
             $this->assertEquals($TarjetaAgregarSaldoPermitido->verSaldo(), $ValoresPermitidosDeCarga[$PosicionActual]);
         }
         $TarjetaAgregarSaldoNoPermitido = new Tarjeta(6000);
+        $TarjetaAgregarSaldoNoPermitido->SetearTiempoFalsoTests();
+
         $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(4000));
         $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(37));
     }
 
     public function testCargaPendiente(){
         $TarjetaCargaPendiente = new Tarjeta(6000);
+        $TarjetaCargaPendiente->SetearTiempoFalsoTests();
         $TarjetaCargaPendiente->agregarSaldo(800);
         $this->assertEquals($TarjetaCargaPendiente->verSaldo(),6600);
         $this->assertEquals($TarjetaCargaPendiente->cargaPendiente,200);
@@ -43,6 +49,7 @@ class TarjetaTest extends TestCase{
 
     public function testDescontarSaldo(){
         $TarjetaDescontarSaldo = new Tarjeta(120);
+        $TarjetaDescontarSaldo->SetearTiempoFalsoTests();
         $TarjetaDescontarSaldo->DescontarSaldo(120);
         $this->AssertEquals($TarjetaDescontarSaldo->verSaldo(),0);
 
@@ -52,29 +59,34 @@ class TarjetaTest extends TestCase{
     }
 
     public function testUsoFrecuenteMensual(){
-        $tarje = new Tarjeta(10000);
-        $cole = new Colectivo('102/144');
+        $TarjetaUsoFrecuenteMensual = new Tarjeta(10000);
+        $TarjetaUsoFrecuenteMensual->SetearTiempoFalsoTests();
 
-        for ($i = 0; $i < 29; $i++){ // primeros 29
-            $cole->pagarCon($tarje);
+        $ColeUsoFrecuenteMensual = new Colectivo('102/144');
+        $VecesPagadas = 0;
+        while ($VecesPagadas < 29){ // primeros 29
+            $cole->pagarCon($TarjetaUsoFrecuenteMensual);
+            $VecesPagadas++;
         }
         // 100000 - (120 * 29) = 10000 - 3480 = 6520
-        $this->AssertEquals($tarje->verSaldo(),6520); 
+        $this->AssertEquals($TarjetaUsoFrecuenteMensual->verSaldo(),6520); 
 
-        for ($i = 29; $i < 79; $i++){ // del 30 al 79 (siguientes 50)
-            $cole->pagarCon($tarje);
+        while ($VecesPagadas < 79){ // del 30 al 79 (siguientes 50)
+            $ColeUsoFrecuenteMensual->pagarCon($TarjetaUsoFrecuenteMensual);
+            $VecesPagadas++;
         }
+        
         // 6520 - (120 * 0.8 * 50) = 6520 - 4800 = 1720
-        $this->AssertEquals($tarje->verSaldo(),1720);
+        $this->AssertEquals($TarjetaUsoFrecuenteMensual->verSaldo(),1720);
 
-        $cole->pagarCon($tarje); // Este boleto al ser el 80 debe tener 25% de descuento
+        $ColeUsoFrecuenteMensual->pagarCon($TarjetaUsoFrecuenteMensual); // Este boleto al ser el 80 debe tener 25% de descuento
         // 1720 - (120 * 0.75) = 1720 - 90 = 1630
-        $this->AssertEquals($tarje->verSaldo(),1630);
+        $this->AssertEquals($TarjetaUsoFrecuenteMensual->verSaldo(),1630);
 
-        $tarje->agregarTiempoFalso(10000000); // mas de un mes
-        $cole->pagarCon($tarje); // boleto sin descuento, el primero del mes
+        $TarjetaUsoFrecuenteMensual->agregarTiempoFalso(10000000); // mas de un mes
+        $ColeUsoFrecuenteMensual->pagarCon($TarjetaUsoFrecuenteMensual); // boleto sin descuento, el primero del mes
         // 1630 - 120 = 1510
-        $this->AssertEquals($tarje->verSaldo(),1510);
+        $this->AssertEquals($TarjetaUsoFrecuenteMensual->verSaldo(),1510);
     }
     
 }
