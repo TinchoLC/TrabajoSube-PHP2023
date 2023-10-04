@@ -9,6 +9,7 @@ class ColectivoTest extends TestCase{
     public function testPagarConDinero() {
         $tarjetaConMenorValor = new Tarjeta();
         $colectivoUsadoParaLasDistintiasTarjetas = new Colectivo();
+        
         $this->assertEquals(get_class($colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaConMenorValor)),get_class(new Boleto()));
         $this->assertEquals($tarjetaConMenorValor->verSaldo(),-120);
         $this->assertEquals($colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaConMenorValor),NULL); // el saldo no puede llegar a -240, el minimo es menor.
