@@ -7,36 +7,39 @@ use PHPUnit\Framework\TestCase;
 class FranquiciaParcialTest extends TestCase{
     
     public function testCincoMinutos(){
-        $tarje = new FranquiciaParcial();
-        $tarje->agregarSaldo(4000);
-        $cole = new Colectivo();
+        $TarjetaFranquiciaParcialPasadosCincoMinutos = new FranquiciaParcial();
+        $TarjetaFranquiciaParcialPasadosCincoMinutos->agregarSaldo(4000);
+        $ColectivoCincoMinutos = new Colectivo();
 
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),3940);
-        $tarje->agregarTiempoFalso(100); // Menos de 5 minutos
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),3820);
-        $tarje->agregarTiempoFalso(1000); // Mas de 5 minutos
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),3760);
+        $ColectivoCincoMinutos->pagarCon($TarjetaFranquiciaParcialPasadosCincoMinutos);
+        $this->AssertEquals($TarjetaFranquiciaParcialPasadosCincoMinutos->verSaldo(),3940);
+
+        $TarjetaFranquiciaParcialPasadosCincoMinutos->agregarTiempoFalso(100); // Menos de 5 minutos
+        $ColectivoCincoMinutos->pagarCon($TarjetaFranquiciaParcialPasadosCincoMinutos);
+        $this->AssertEquals($TarjetaFranquiciaParcialPasadosCincoMinutos->verSaldo(),3820);
+
+        $TarjetaFranquiciaParcialPasadosCincoMinutos->agregarTiempoFalso(1000); // Mas de 5 minutos
+        $ColectivoCincoMinutos->pagarCon($TarjetaFranquiciaParcialPasadosCincoMinutos);
+        $this->AssertEquals($TarjetaFranquiciaParcialPasadosCincoMinutos->verSaldo(),3760);
     }
 
-    public function testCuatroPordia(){
-        $tarje = new FranquiciaParcial();
-        $tarje->agregarSaldo(4000);
-        $cole = new Colectivo();
-        for($i = 0;$i<5;$i++){
-            $cole->pagarCon($tarje);
-            $tarje->agregarTiempoFalso(1000); // Mas de 5 minutos
+    public function testPagarHastaCuatroVecesAntesDeCobrarBoletoNormal(){
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces = new FranquiciaParcial();
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarSaldo(4000);
+        $ColectivoPagarHastaCuatroVeces = new Colectivo();
+
+        $VecesQuePagamos = 0;
+        while($VecesQuePagamos<5){
+            $ColectivoPagarHastaCuatroVeces->pagarCon($TajertoFranquiciaParcialPagarHastaCuatroVeces);
+            $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(1000); // Mas de 5 minutos
+            $VecesQuePagamos++;
         }
-        $this->AssertEquals($tarje->verSaldo(),3640); // 4 viajes medioboleto y 1 normal
+        $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3640); // 4 viajes medioboleto y 1 normal
 
-        $tarje->agregarTiempoFalso(10000000);
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),3580);
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(10000000);
+        $ColectivoPagarHastaCuatroVeces->pagarCon($TajertoFranquiciaParcialPagarHastaCuatroVeces);
+        $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3580);
 
     }
-
-
 
 }

@@ -7,32 +7,32 @@ use PHPUnit\Framework\TestCase;
 class FranquiciaCompletaBEGTest extends TestCase{
 
     public function testTerceraVezPaga(){
-        $tarje = new FranquiciaCompletaBEG();
-        $cole = new Colectivo();
+        $TarjetaFranquiciaCompletaBEGPagandoTresVeces = new FranquiciaCompletaBEG();
+        $ColectivoFranquiciaCompletaBEGPagandoTresVeces = new Colectivo();
 
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),0);
+        $ColectivoFranquiciaCompletaBEGPagandoTresVeces->pagarCon($TarjetaFranquiciaCompletaBEGPagandoTresVeces);
+        $this->AssertEquals($TarjetaFranquiciaCompletaBEGPagandoTresVeces->verSaldo(),0);
 
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),0);
+        $ColectivoFranquiciaCompletaBEGPagandoTresVeces->pagarCon($TarjetaFranquiciaCompletaBEGPagandoTresVeces);
+        $this->AssertEquals($TarjetaFranquiciaCompletaBEGPagandoTresVeces->verSaldo(),0);
 
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),-120);
+        $ColectivoFranquiciaCompletaBEGPagandoTresVeces->pagarCon($TarjetaFranquiciaCompletaBEGPagandoTresVeces);
+        $this->AssertEquals($TarjetaFranquiciaCompletaBEGPagandoTresVeces->verSaldo(),-120);
     }
 
     public function testDistintosdias(){
-        $tarje = new FranquiciaCompletaBEG();
-        $cole = new Colectivo();
+        $TarjetaFranquiciaCompletaBEGPDistintosDias = new FranquiciaCompletaBEG();
+        $ColectivoFranquiciaCompletaBEGDistintosDias = new Colectivo();
 
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),0);
+        $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);
+        $this->AssertEquals($TarjetaFranquiciaCompletaBEGPDistintosDias->verSaldo(),0);
 
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),0);
+        $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);
+        $this->AssertEquals($TarjetaFranquiciaCompletaBEGPDistintosDias->verSaldo(),0);
 
-        $tarje->agregarTiempoFalso(10000000);
-        $cole->pagarCon($tarje);
-        $this->AssertEquals($tarje->verSaldo(),0);
+        $TarjetaFranquiciaCompletaBEGPDistintosDias->agregarTiempoFalso(10000000);
+        $ColectivoFranquiciaCompletaBEGDistintosDias->pagarCon($TarjetaFranquiciaCompletaBEGPDistintosDias);
+        $this->AssertEquals($TarjetaFranquiciaCompletaBEGPDistintosDias->verSaldo(),0);
     }
 
 }
