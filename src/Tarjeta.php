@@ -99,12 +99,12 @@ class Tarjeta{
                 $this->viajesmes = [];
         }
 
-        if (count($this->viajesmes) < 30) 
+        if (count($this->viajesmes) < 29) 
             return $precio;
-        else if (count($this->viajesmes) < 80)
-            return $precio / 1.2;
+        else if (count($this->viajesmes) < 79)
+            return $precio * 0.8;
         else 
-            return $precio / 1.25;
+            return $precio * 0.75;
     }
 
     // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian

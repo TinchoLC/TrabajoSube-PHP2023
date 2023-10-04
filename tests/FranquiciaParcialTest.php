@@ -31,7 +31,7 @@ class FranquiciaParcialTest extends TestCase{
         }
         $this->AssertEquals($tarje->verSaldo(),3640); // 4 viajes medioboleto y 1 normal
 
-        $tarje->agregarTiempoFalso(100000);
+        $tarje->agregarTiempoFalso(10000000);
         $cole->pagarCon($tarje);
         $this->AssertEquals($tarje->verSaldo(),3580);
 

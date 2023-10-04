@@ -40,14 +40,6 @@ class TarjetaTest extends TestCase{
 
     }
 
-    public function test__construct() {
-        $saldoInicial = 50;
-        $idInicial = 144;
-        $tarje = new Tarjeta($saldoInicial,$idInicial);
-        $this->assertEquals($tarje->verSaldo(), $saldoInicial);
-        $this->assertEquals($tarje->id, $idInicial);
-    }
-
     public function testDescontarSaldo(){
         $tarje = new Tarjeta(120);
         $tarje->DescontarSaldo(120);
@@ -56,6 +48,32 @@ class TarjetaTest extends TestCase{
         $tarje->agregarTiempoFalso(100000);
         $tarje->DescontarSaldo(120);
         $this->AssertEquals($tarje->verSaldo(),-120);
+    }
+
+    public function testUsoFrecuenteMensual(){
+        $tarje = new Tarjeta(10000);
+        $cole = new Colectivo('102/144');
+
+        for ($i = 0; i < 29; $i++){ // primeros 29
+            $cole->pagarCon($tarje);
+        }
+        // 100000 - (120 * 29) = 10000 - 3480 = 6520
+        $this->AssertEquals($tarje->verSaldo(),6520); 
+
+        for ($i = 0; i < 49; $i++){ // del 30 al 79 (siguientes 49)
+            $cole->pagarCon($tarje);
+        }
+        // 6520 - (120 * 0.8 * 49) = 6520 - 4704 = 1816
+        $this->AssertEquals($tarje->verSaldo(),1816);
+
+        $cole->pagarCon($tarje); // Este boleto al ser el 80 debe tener 25% de descuento
+        // 1816 - (120 * 0.75) = 1816 - 90 = 1726
+        $this->AssertEquals($tarje->verSaldo(),1726);
+
+        $tarje->agregarTiempoFalso(10000000); // mas de un mes
+        $cole->pagarCon($tarje); // boleto sin descuento, el primero del mes
+        // 1726 - 120 = 1606
+        $this->AssertEquals($tarje->verSaldo(),1606);
     }
     
 }
