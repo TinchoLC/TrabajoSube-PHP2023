@@ -65,7 +65,7 @@ class TarjetaTest extends TestCase{
         $ColeUsoFrecuenteMensual = new Colectivo('102/144');
         $VecesPagadas = 0;
         while ($VecesPagadas < 29){ // primeros 29
-            $cole->pagarCon($TarjetaUsoFrecuenteMensual);
+            $ColeUsoFrecuenteMensual->pagarCon($TarjetaUsoFrecuenteMensual);
             $VecesPagadas++;
         }
         // 100000 - (120 * 29) = 10000 - 3480 = 6520
