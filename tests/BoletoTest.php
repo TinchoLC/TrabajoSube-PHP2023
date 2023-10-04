@@ -16,7 +16,7 @@ class BoletoTest extends TestCase{
 
     public function testDatosBoleto() {
       $TarjetaDatosBoleto = new Tarjeta(500,2188);
-      $TarjetaDatosBoleto->SetearTiempoFalsoTests;
+      $TarjetaDatosBoleto->SetearTiempoFalsoTests();
 
       $ColectivoDatosBoleto = new Colectivo('122 Verde');
       $BoletoDeDondeSacarLosDatos = $ColectivoDatosBoleto->pagarCon($TarjetaDatosBoleto);
@@ -33,8 +33,8 @@ class BoletoTest extends TestCase{
 
     public function testInformeNegativo(){
       $TarjetaConSaldoNegativo = new Tarjeta(-100,1000);
-      $TarjetaConSaldoNegativo->SetearTiempoFalsoTests;
-      
+      $TarjetaConSaldoNegativo->SetearTiempoFalsoTests();
+
       $ColectivoInformeNegativo = new Colectivo('Expreso Andino');
       $TarjetaConSaldoNegativo->agregarSaldo(500);
       $BoletoInformeNegativo = $ColectivoInformeNegativo->pagarCon($TarjetaConSaldoNegativo);
