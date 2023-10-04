@@ -10,7 +10,6 @@ class Tarjeta{
     public $cargaPendiente = 0;
     public $viajeshoy = [];
     public $viajesmes = [];
-    public $tiempofalsoagregado = 0;
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -107,20 +106,30 @@ class Tarjeta{
             return $precio * 0.75;
     }
 
-    // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian
-    // en caso de que esto se aplicara para algo real (la funcion timx() seria reemplazada por time())
-    public function agregarTiempoFalso($ag){
-      $this->tiempofalsoagregado+=$ag;
-    }
-
-    public function timx(){
-      return time() + $this->tiempofalsoagregado;
-    }
-
     function IsDiasCorrecto($TiempoActual){
       $DiaActual = date('l',$TiempoActual);
       $TiempoActual = date('h:i:s',$TiempoActual);
       return (($DiaActual != "Saturday" && $DiaActual != "Sunday") && ($TiempoActual >= '06:00:00' && $TiempoActual <= '22:00:00'));
+    }
+    
+    // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian
+    // en caso de que esto se aplicara para algo real (la funcion timx() seria reemplazada por time())
+    public $tiempofalsoagregado = 0;
+    public $tiemporeal = true;
+    
+    public function agregarTiempoFalso($ag){
+        $this->tiempofalsoagregado+=$ag;
+    }
+
+    public function timx(){
+        if ($this->tiemporeal)
+            return time() + $this->tiempofalsoagregado;
+        else 
+            return 1672542000 + $this->tiempofalsoagregado;
+    }
+
+    public function falsearTiempo(){
+        $this->tiemporeal = false;
     }
 
 }
