@@ -12,6 +12,13 @@ class TarjetaTest extends TestCase{
         $this->assertEquals($TarjetaVerSaldo->verSaldo(), 100);
     }
 
+    public function testSetearTiempoFalsoTests(){
+        $TarjetaSetearTiempoFalso = new Tarjeta();
+        $TarjetaSetearTiempoFalso->SetearTiempoFalsoTests();
+        $this->assertFalse($TarjetaSetearTiempoFalso->tiemporeal);
+        $this->assertEquals($TarjetaSetearTiempoFalso->tiempofalsoagregado,21600);
+    }
+
     public function testAgregarSaldo(){  
         $ValoresPermitidosDeCarga = [150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000];
         
