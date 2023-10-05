@@ -12,9 +12,6 @@ class Tarjeta{
     protected $viajeshoy = [];
     private $viajesmes = [];
 
-    public $tiempofalsoagregado = 0;
-    public $tiemporeal = true;
-
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
       $this->id = $idd;
@@ -115,8 +112,8 @@ class Tarjeta{
     
     // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian
     // en caso de que esto se aplicara para algo real (la funcion timx() seria reemplazada por time())
-    //public $tiempofalsoagregado = 0;
-    //public $tiemporeal = true;
+    public $tiempofalsoagregado = 0;
+    public $tiemporeal = true;
     
     public function agregarTiempoFalso($ag){
         $this->tiempofalsoagregado+=$ag;
@@ -127,6 +124,10 @@ class Tarjeta{
             return (time() - 10800) + $this->tiempofalsoagregado;
         else 
             return 1682920800 + $this->tiempofalsoagregado;
+    }
+
+    public function falsearTiempo(){
+        $this->tiemporeal = false;
     }
 
     public function SetearTiempoFalsoTests(){
