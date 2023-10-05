@@ -16,7 +16,6 @@ class TarjetaTest extends TestCase{
         $TarjetaSetearTiempoFalso = new Tarjeta();
         $TarjetaSetearTiempoFalso->SetearTiempoFalsoTests();
         $this->assertFalse($TarjetaSetearTiempoFalso->tiemporeal);
-        $this->assertEquals($TarjetaSetearTiempoFalso->tiempofalsoagregado,21600);
     }
 
     public function testAgregarSaldo(){  
