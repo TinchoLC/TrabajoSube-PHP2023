@@ -123,16 +123,11 @@ class Tarjeta{
         if ($this->tiemporeal)
             return (time() - 10800) + $this->tiempofalsoagregado;
         else 
-            return 1682899200 + $this->tiempofalsoagregado;
-    }
-
-    public function falsearTiempo(){
-        $this->tiemporeal = false;
+            return 1682920800 + $this->tiempofalsoagregado;
     }
 
     public function SetearTiempoFalsoTests(){
       $this->tiemporeal = false;
-      $this->tiempofalsoagregado = 21600;
     }
 
 }
