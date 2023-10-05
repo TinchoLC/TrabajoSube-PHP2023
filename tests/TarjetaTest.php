@@ -70,6 +70,7 @@ class TarjetaTest extends TestCase{
         $TarjetaUsoFrecuenteMensual->SetearTiempoFalsoTests();
 
         $ColeUsoFrecuenteMensual = new Colectivo('102/144');
+        
         $VecesPagadas = 0;
         while ($VecesPagadas < 29){ // primeros 29
             $ColeUsoFrecuenteMensual->pagarCon($TarjetaUsoFrecuenteMensual);
