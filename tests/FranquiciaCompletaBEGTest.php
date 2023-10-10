@@ -10,7 +10,6 @@ class FranquiciaCompletaBEGTest extends TestCase{
         $Tarjeta = new FranquiciaCompletaBEG();
         $Colectivo = new Colectivo();
         $Tarjeta->agregarSaldo(4000);
-        $Tarjeta->agregarSaldo(4000);
 
         $Tarjeta->falsearTiempo();
         $Tarjeta->agregarTiempoFalso(54000); // agregado 15 horas, llega a 23:00 y sale del horario

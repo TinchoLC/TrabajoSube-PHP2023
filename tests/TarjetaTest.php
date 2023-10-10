@@ -9,7 +9,8 @@ class TarjetaTest extends TestCase{
     public function testTiempo(){
         $Tarjeta = new Tarjeta();
         echo $Tarjeta->timx();
-        $TarjetaVerSaldo->falsearTiempo();
+        $Tarjeta->falsearTiempo();
+        $this->assertFalse($TarjetaSetearTiempoFalso->tiemporeal);
         $this->assertEquals($Tarjeta->timx(), 1682920800);
     }
 
@@ -18,13 +19,7 @@ class TarjetaTest extends TestCase{
         $TarjetaVerSaldo->falsearTiempo();
         $this->assertEquals($TarjetaVerSaldo->verSaldo(), 100);
     }
-
-    public function testFalsearTiempo(){
-        $TarjetaSetearTiempoFalso = new Tarjeta();
-        $TarjetaSetearTiempoFalso->falsearTiempo();
-        $this->assertFalse($TarjetaSetearTiempoFalso->tiemporeal);
-    }
-
+    
     public function testAgregarSaldo(){  
         $ValoresPermitidosDeCarga = [150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000];
         
