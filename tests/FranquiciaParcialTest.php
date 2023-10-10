@@ -6,6 +6,14 @@ use PHPUnit\Framework\TestCase;
 
 class FranquiciaParcialTest extends TestCase{
     
+    public function testFueradeHora(){
+        $Tarjeta = new FranquiciaParcial();
+        $Colectivo = new Colectivo();
+        $Tarjeta->agregarSaldo(4000);
+        $Colectivo->pagarCon($Tarjeta);
+        $this->AssertEquals($Tarjeta->verSaldo(),3880);
+    }
+
     public function testCincoMinutos(){
         $TarjetaFranquiciaParcialPasadosCincoMinutos = new FranquiciaParcial();
         $TarjetaFranquiciaParcialPasadosCincoMinutos->falsearTiempo();

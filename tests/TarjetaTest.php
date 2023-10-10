@@ -6,6 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase{
 
+    public function testTiempo(){
+        $Tarjeta = new Tarjeta();
+        $this->assertEquals($Tarjeta->timx(), time());
+        $TarjetaVerSaldo->falsearTiempo();
+        $this->assertEquals($Tarjeta->timx(), 1682920800);
+    }
+
     public function testVerSaldo(){  
         $TarjetaVerSaldo = new Tarjeta(100);
         $TarjetaVerSaldo->falsearTiempo();

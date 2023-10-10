@@ -6,6 +6,14 @@ use PHPUnit\Framework\TestCase;
 
 class FranquiciaCompletaBEGTest extends TestCase{
 
+    public function testFueradeHora(){
+        $Tarjeta = new FranquiciaCompletaBEG();
+        $Colectivo = new Colectivo();
+        $Tarjeta->agregarSaldo(4000);
+        $Colectivo->pagarCon($Tarjeta);
+        $this->AssertEquals($Tarjeta->verSaldo(),3880);
+    }
+
     public function testTerceraVezPaga(){
         $TarjetaFranquiciaCompletaBEGPagandoTresVeces = new FranquiciaCompletaBEG();
         $TarjetaFranquiciaCompletaBEGPagandoTresVeces->falsearTiempo();
