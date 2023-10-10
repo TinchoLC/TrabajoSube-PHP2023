@@ -17,7 +17,7 @@ class FranquiciaParcial extends Tarjeta{
     }
     
     if (count($this->viajeshoy) > 0) {
-        if(!$this->mismoDia($marca,$this->viajeshoy[1])){
+        if(!$this->mismoDia($marca,$this->viajeshoy[0])){
             $this->viajeshoy = [];
             $this->medioBoletoPorDia = 0;
         }
