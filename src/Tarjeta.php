@@ -92,7 +92,7 @@ class Tarjeta{
         $marca = $this->timx();
 
         if (count($this->viajesmes) > 0) {
-            if(!$this->mismoMes($marca,$this->viajesmes[1]))
+            if(!$this->mismoMes($marca,$this->viajesmes[0]))
                 $this->viajesmes = [];
         }
 
