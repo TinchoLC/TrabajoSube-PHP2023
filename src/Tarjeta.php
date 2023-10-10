@@ -128,6 +128,7 @@ class Tarjeta{
 
     public function falsearTiempo(){
         $this->tiemporeal = false;
+    }
 
 }
 
