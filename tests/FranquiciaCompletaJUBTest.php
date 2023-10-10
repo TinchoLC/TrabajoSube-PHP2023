@@ -10,6 +10,10 @@ class FranquiciaCompletaJUBTest extends TestCase{
         $Tarjeta = new FranquiciaCompletaJUB();
         $Colectivo = new Colectivo();
         $Tarjeta->agregarSaldo(4000);
+
+        $Tarjeta->falsearTiempo();
+        $Tarjeta->agregarTiempoFalso(54000); // agregado 15 horas, llega a 23:00 y sale del horario
+        
         $Colectivo->pagarCon($Tarjeta);
         $this->AssertEquals($Tarjeta->verSaldo(),3880);
     }

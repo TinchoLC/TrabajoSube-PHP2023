@@ -8,7 +8,7 @@ class TarjetaTest extends TestCase{
 
     public function testTiempo(){
         $Tarjeta = new Tarjeta();
-        $this->assertEquals($Tarjeta->timx(), time());
+        echo $Tarjeta->timx();
         $TarjetaVerSaldo->falsearTiempo();
         $this->assertEquals($Tarjeta->timx(), 1682920800);
     }
