@@ -12,9 +12,9 @@ class FranquiciaCompletaJUB extends Tarjeta{
         $marca = $this->timx();
         
         if(!$this->isDiasCorrecto($this->timx())){
-            return $precio;
+            return $precio; // si esta fuera del rango de dias paga el boleto completo
         }
 
-        return 0;
+        return 0; // En el caso normal no paga boleto
       }
 }

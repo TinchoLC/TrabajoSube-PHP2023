@@ -12,17 +12,17 @@ class FranquiciaCompletaBEG extends Tarjeta{
         $marca = $this->timx();
     
         if(!$this->isDiasCorrecto($marca)){
-            return $precio;
+            return $precio; // Si esta fuera del rango de dias paga boleto completo
         }
     
-        if (count($this->viajeshoy) > 0) {
-            if(!$this->mismoDia($marca,$this->viajeshoy[0]))
-                $this->viajeshoy = [];
+        if (count($this->viajesHoy) > 0) {
+            if(!$this->mismoDia($marca,$this->viajesHoy[0]))
+                $this->viajesHoy = [];
         }
     
-        if(count($this->viajeshoy) > 1)
-            return $precio;
+        if(count($this->viajesHoy) > 1)
+            return $precio; // Si ya pago 2 o mas boletos hoy se paga normalmente
         else
-            return 0; 
+            return 0; // No se paga el boleto ya que se utiliza el boleto gratuito
     }
 }

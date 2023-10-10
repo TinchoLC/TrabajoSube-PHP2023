@@ -9,8 +9,8 @@ class Tarjeta{
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
     
-    protected $viajeshoy = [];
-    private $viajesmes = [];
+    protected $viajesHoy = [];
+    private $viajesMes = [];
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -70,18 +70,18 @@ class Tarjeta{
     }
     
     // Esta es una funcion basica donde le das 2 resultados de time() y te dice si son el mismo dia
-    protected function mismoDia($a,$b){
-      return date("l jS \of F Y", $a) == date("l jS \of F Y", $b);
+    protected function mismoDia($date1,$date2){
+      return date("l jS \of F Y", $date1) == date("l jS \of F Y", $date2);
     }
-    protected function mismoMes($a, $b){
-      return date("F Y", $a) == date("F Y", $b);
+    protected function mismoMes($date1, $date2){
+      return date("F Y", $date1) == date("F Y", $date2);
     }
 
     // Esta funcion marca un viaje en los viajes de hoy
     public function marcaViaje(){
       $marca = $this->timx();
-      array_push($this->viajeshoy,$marca);
-      array_push($this->viajesmes,$marca);
+      array_push($this->viajesHoy,$marca);
+      array_push($this->viajesMes,$marca);
     }
 
     // Esta funcion informa cuanto debes pagar. Le debes agregar un booleano 
@@ -91,19 +91,21 @@ class Tarjeta{
     public function cuantoDescuento($precio,$pagar){
         $marca = $this->timx();
 
-        if (count($this->viajesmes) > 0) {
-            if(!$this->mismoMes($marca,$this->viajesmes[0]))
-                $this->viajesmes = [];
+        if (count($this->viajesMes) > 0) {
+            if(!$this->mismoMes($marca,$this->viajesMes[0]))
+                $this->viajesMes = [];
         }
 
-        if (count($this->viajesmes) < 29) 
-            return $precio;
-        else if (count($this->viajesmes) < 79)
-            return $precio * 0.8;
-        else 
-            return $precio * 0.75;
+        if (count($this->viajesMes) < 29) // viajes del 0 al  29
+            return $precio; // precio total
+        else if (count($this->viajesMes) < 79) // viajes del 30 al 79
+            return $precio * 0.8; // 20% de descuento
+        else // viajes a partir del 80
+            return $precio * 0.75; // 25% de descuento
     }
 
+    // Esta funcion toma una marca de tiempo y devuelve un booleano, este es positivo si la marca de tiempo se encuentra
+    // dentro del rango (lunes a viernes, 06 a 22hs)
     function isDiasCorrecto($TiempoActual){
       $DiaActual = date('l',$TiempoActual);
       $TiempoActual = date('H:i:s',$TiempoActual);

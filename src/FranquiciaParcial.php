@@ -13,19 +13,19 @@ class FranquiciaParcial extends Tarjeta{
     $marca = $this->timx();
 
     if(!$this->isDiasCorrecto($this->timx())){
-      return $precio;
+      return $precio; // Si esta fuera del rango de dias del funcionamiento simplemente cobra el boleto completo
     }
     
-    if (count($this->viajeshoy) > 0) {
-        if(!$this->mismoDia($marca,$this->viajeshoy[0])){
-            $this->viajeshoy = [];
+    if (count($this->viajesHoy) > 0) {
+        if(!$this->mismoDia($marca,$this->viajesHoy[0])){
+            $this->viajesHoy = [];
             $this->medioBoletoPorDia = 0;
         }
         else{
-            if($marca - end($this->viajeshoy) > (5*60) && $this->medioBoletoPorDia<4){
+            if($marca - end($this->viajesHoy) > (5*60) && $this->medioBoletoPorDia<4){ // Si pasaron mas de 5 minutos desde el ultimo medio boleto y hubo menos de 4 hoy
                 if ($pagar)
                     $this->medioBoletoPorDia++;
-                return $precio / 2;
+                return $precio / 2; // Paga la mitad del boleto
             }
             else 
                 return $precio;
@@ -33,6 +33,6 @@ class FranquiciaParcial extends Tarjeta{
     }
     if ($pagar)
       $this->medioBoletoPorDia++;
-    return $precio / 2;
+    return $precio / 2; // Si hoy todavia no se pago cobra la mitad del boleto
   }
 }
