@@ -6,8 +6,21 @@ use PHPUnit\Framework\TestCase;
 
 class FranquiciaParcialTest extends TestCase{
     
+    public function testFueradeHora(){
+        $Tarjeta = new FranquiciaParcial();
+        $Colectivo = new Colectivo();
+        $Tarjeta->agregarSaldo(4000);
+
+        $Tarjeta->falsearTiempo();
+        $Tarjeta->agregarTiempoFalso(61200); // agregado 17 horas, llega a 23:00 y sale del horario
+        
+        $Colectivo->pagarCon($Tarjeta);
+        $this->AssertEquals($Tarjeta->verSaldo(),3880);
+    }
+
     public function testCincoMinutos(){
         $TarjetaFranquiciaParcialPasadosCincoMinutos = new FranquiciaParcial();
+        $TarjetaFranquiciaParcialPasadosCincoMinutos->falsearTiempo();
         $TarjetaFranquiciaParcialPasadosCincoMinutos->agregarSaldo(4000);
         $ColectivoCincoMinutos = new Colectivo();
 
@@ -25,7 +38,9 @@ class FranquiciaParcialTest extends TestCase{
 
     public function testPagarHastaCuatroVecesAntesDeCobrarBoletoNormal(){
         $TajertoFranquiciaParcialPagarHastaCuatroVeces = new FranquiciaParcial();
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces->falsearTiempo();
         $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarSaldo(4000);
+
         $ColectivoPagarHastaCuatroVeces = new Colectivo();
 
         $VecesQuePagamos = 0;
@@ -36,7 +51,7 @@ class FranquiciaParcialTest extends TestCase{
         }
         $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3640); // 4 viajes medioboleto y 1 normal
 
-        $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(10000000);
+        $TajertoFranquiciaParcialPagarHastaCuatroVeces->agregarTiempoFalso(90000);
         $ColectivoPagarHastaCuatroVeces->pagarCon($TajertoFranquiciaParcialPagarHastaCuatroVeces);
         $this->AssertEquals($TajertoFranquiciaParcialPagarHastaCuatroVeces->verSaldo(),3580);
 

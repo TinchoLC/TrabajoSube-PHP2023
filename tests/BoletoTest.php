@@ -16,6 +16,8 @@ class BoletoTest extends TestCase{
 
     public function testDatosBoleto() {
       $TarjetaDatosBoleto = new Tarjeta(500,2188);
+      $TarjetaDatosBoleto->falsearTiempo();
+
       $ColectivoDatosBoleto = new Colectivo('122 Verde');
       $BoletoDeDondeSacarLosDatos = $ColectivoDatosBoleto->pagarCon($TarjetaDatosBoleto);
       $this->assertEquals(get_class($BoletoDeDondeSacarLosDatos),"TrabajoSube\Boleto");
@@ -31,6 +33,8 @@ class BoletoTest extends TestCase{
 
     public function testInformeNegativo(){
       $TarjetaConSaldoNegativo = new Tarjeta(-100,1000);
+      $TarjetaConSaldoNegativo->falsearTiempo();
+
       $ColectivoInformeNegativo = new Colectivo('Expreso Andino');
       $TarjetaConSaldoNegativo->agregarSaldo(500);
       $BoletoInformeNegativo = $ColectivoInformeNegativo->pagarCon($TarjetaConSaldoNegativo);

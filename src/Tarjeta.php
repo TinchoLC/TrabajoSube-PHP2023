@@ -8,9 +8,9 @@ class Tarjeta{
     public $tipo = 'Normal';
     public $informeNegativoDeuda = false;
     public $cargaPendiente = 0;
-    public $viajeshoy = [];
-    public $viajesmes = [];
-    public $tiempofalsoagregado = 0;
+    
+    protected $viajeshoy = [];
+    private $viajesmes = [];
 
     public function __construct($sald=0,$idd = 0){
       $this->saldo = $sald;
@@ -23,19 +23,19 @@ class Tarjeta{
         if (($agregado + $this->saldo) > $this->saldoMaximo){ // Comprueba si se superaria el saldo maximo, si es asi carga lo restante en cargapendiente
           $this->cargaPendiente += ($agregado) - ($this->saldoMaximo - $this->saldo);
           $this->saldo = $this->saldoMaximo;
-          echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Asi que tienes " . $this->cargaPendiente . " de carga pendiente.";
+          # echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Asi que tienes " . $this->cargaPendiente . " de carga pendiente.";
           return false;
         }
         else{ // Si el saldo agregado no es superior al maximo:
         if($this->saldo < 0 && $this->saldo + $agregado > 0) // Comprueba si con este saldo agregado la tarjeta sale de saldo negativo
           $this->informeNegativoDeuda = true; // Cambio booleano que luego se utilzara en el boleto para informar
         $this->saldo += $agregado; // Agregar el saldo
-        echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;
+        # echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;
         return true;
         }
       }
       else{
-        echo "La carga que estas intentando no es correcta, las cargas aceptadas son: (150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000)";
+        # echo "La carga que estas intentando no es correcta, las cargas aceptadas son: (150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000)";
         return false;
       }
     }
@@ -90,12 +90,9 @@ class Tarjeta{
     // Si es el mismo no hace nada, si no es el mismo, borra los registros porque entiende que es un nuevo dia.
     public function cuantoDescuento($precio,$pagar){
         $marca = $this->timx();
-        if (count($this->viajeshoy) > 0) {
-        	if(!$this->mismoDia($marca,$this->viajeshoy[1]))
-            	$this->viajeshoy = [];
-        }
+
         if (count($this->viajesmes) > 0) {
-            if(!$this->mismoMes($marca,$this->viajesmes[1]))
+            if(!$this->mismoMes($marca,$this->viajesmes[0]))
                 $this->viajesmes = [];
         }
 
@@ -107,14 +104,32 @@ class Tarjeta{
             return $precio * 0.75;
     }
 
+    function isDiasCorrecto($TiempoActual){
+      $DiaActual = date('l',$TiempoActual);
+      $TiempoActual = date('H:i:s',$TiempoActual);
+      return (($DiaActual != "Saturday" && $DiaActual != "Sunday") && ($TiempoActual >= '06:00:00' && $TiempoActual <= '22:00:00'));
+    }
+    
     // Estas 2 funciones son para manejar el tiempo y poder hacer los tests correctamente, no existirian
     // en caso de que esto se aplicara para algo real (la funcion timx() seria reemplazada por time())
+    public $tiempofalsoagregado = 0;
+    public $tiemporeal = true;
+    
     public function agregarTiempoFalso($ag){
-      $this->tiempofalsoagregado+=$ag;
+        $this->tiempofalsoagregado+=$ag;
     }
+
     public function timx(){
-      return time() + $this->tiempofalsoagregado;
+        if ($this->tiemporeal)
+            return (time() - 10800) + $this->tiempofalsoagregado;
+        else 
+            return 1682920800 + $this->tiempofalsoagregado;
     }
+
+    public function falsearTiempo(){
+        $this->tiemporeal = false;
+    }
+
 }
 
 

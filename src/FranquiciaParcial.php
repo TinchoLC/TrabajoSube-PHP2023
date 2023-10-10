@@ -12,13 +12,12 @@ class FranquiciaParcial extends Tarjeta{
   public function cuantoDescuento($precio, $pagar){
     $marca = $this->timx();
 
-    if (count($this->viajesmes) > 0) {
-        if(!$this->mismoMes($marca,$this->viajesmes[1]))
-            $this->viajesmes = [];
+    if(!$this->isDiasCorrecto($this->timx())){
+      return $precio;
     }
     
     if (count($this->viajeshoy) > 0) {
-        if(!$this->mismoDia($marca,$this->viajeshoy[1])){
+        if(!$this->mismoDia($marca,$this->viajeshoy[0])){
             $this->viajeshoy = [];
             $this->medioBoletoPorDia = 0;
         }

@@ -7,10 +7,12 @@ use PHPUnit\Framework\TestCase;
 class ColectivoInterurbanoTest extends TestCase{
 
     public function testPagarConDinero() {
-        $tarjeta = new Tarjeta(184);
+        $TarjetaInterurbano = new Tarjeta(184);
+        $TarjetaInterurbano->falsearTiempo();
+
         $colectivoInterurbano = new ColectivoInterurbano();
-        $colectivoInterurbano->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->verSaldo(),0);
+        $colectivoInterurbano->pagarCon($TarjetaInterurbano);
+        $this->assertEquals($TarjetaInterurbano->verSaldo(),0);
 
     }
 }
