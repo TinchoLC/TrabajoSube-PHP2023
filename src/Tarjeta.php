@@ -104,9 +104,9 @@ class Tarjeta{
             return $precio * 0.75;
     }
 
-    function IsDiasCorrecto($TiempoActual){
+    function isDiasCorrecto($TiempoActual){
       $DiaActual = date('l',$TiempoActual);
-      $TiempoActual = date('h:i:s',$TiempoActual);
+      $TiempoActual = date('H:i:s',$TiempoActual);
       return (($DiaActual != "Saturday" && $DiaActual != "Sunday") && ($TiempoActual >= '06:00:00' && $TiempoActual <= '22:00:00'));
     }
     

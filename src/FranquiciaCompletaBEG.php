@@ -11,7 +11,7 @@ class FranquiciaCompletaBEG extends Tarjeta{
     public function cuantoDescuento($precio, $pagar){
         $marca = $this->timx();
     
-        if(!$this->IsDiasCorrecto($marca)){
+        if(!$this->isDiasCorrecto($marca)){
             return $precio;
         }
     

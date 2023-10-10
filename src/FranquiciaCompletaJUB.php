@@ -11,7 +11,7 @@ class FranquiciaCompletaJUB extends Tarjeta{
     public function cuantoDescuento($precio, $pagar){
         $marca = $this->timx();
         
-        if(!$this->IsDiasCorrecto($this->timx())){
+        if(!$this->isDiasCorrecto($this->timx())){
             return $precio;
         }
 

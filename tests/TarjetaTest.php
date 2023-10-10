@@ -10,7 +10,6 @@ class TarjetaTest extends TestCase{
         $Tarjeta = new Tarjeta();
         echo $Tarjeta->timx();
         $Tarjeta->falsearTiempo();
-        $this->assertFalse($TarjetaSetearTiempoFalso->tiemporeal);
         $this->assertEquals($Tarjeta->timx(), 1682920800);
     }
 
