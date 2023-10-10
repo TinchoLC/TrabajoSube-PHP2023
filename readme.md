@@ -95,7 +95,7 @@ Al utilizar una tarjeta de tipo boleto educativo gratuito se pueden realizar has
 - Escribir un test que valide que si a una tarjeta se le carga un monto que supere el máximo permitido, se acredite el saldo hasta alcanzar el máximo(6600) y que el excedente quede almacenado y pendiente de acreditación.
 - Escribir un test que valide que luego de realizar un viaje, verifique si hay saldo pendiente de acreditación y recargue la tarjeta hasta llegar al máximo nuevamente.
 
-## Iteracion 4.
+## Iteracion 4. (Completa)
 ## Boleto de uso frecuente
 Las tarjetas SUBE cuentan con el boleto de uso frecuente. Este es un beneficio que aplica un descuento al monto del boleto dependiendo de cuántos viajes se hagan.
 - Del viaje 1 al 29: Tarifa normal.
