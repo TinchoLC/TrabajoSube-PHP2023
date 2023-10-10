@@ -8,7 +8,7 @@ class ColectivoInterurbanoTest extends TestCase{
 
     public function testPagarConDinero() {
         $TarjetaInterurbano = new Tarjeta(184);
-        $TarjetaInterurbano->SetearTiempoFalsoTests();
+        $TarjetaInterurbano->falsearTiempo();
 
         $colectivoInterurbano = new ColectivoInterurbano();
         $colectivoInterurbano->pagarCon($TarjetaInterurbano);

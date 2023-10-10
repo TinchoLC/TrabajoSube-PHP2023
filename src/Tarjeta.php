@@ -23,19 +23,19 @@ class Tarjeta{
         if (($agregado + $this->saldo) > $this->saldoMaximo){ // Comprueba si se superaria el saldo maximo, si es asi carga lo restante en cargapendiente
           $this->cargaPendiente += ($agregado) - ($this->saldoMaximo - $this->saldo);
           $this->saldo = $this->saldoMaximo;
-          echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Asi que tienes " . $this->cargaPendiente . " de carga pendiente.";
+          # echo "Agregando " . $agregado . " superarias el limite de saldo ($6600). Asi que tienes " . $this->cargaPendiente . " de carga pendiente.";
           return false;
         }
         else{ // Si el saldo agregado no es superior al maximo:
         if($this->saldo < 0 && $this->saldo + $agregado > 0) // Comprueba si con este saldo agregado la tarjeta sale de saldo negativo
           $this->informeNegativoDeuda = true; // Cambio booleano que luego se utilzara en el boleto para informar
         $this->saldo += $agregado; // Agregar el saldo
-        echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;
+        # echo "Agregaste " . $agregado . ". Tu nuevo saldo es de: " . $this->saldo;
         return true;
         }
       }
       else{
-        echo "La carga que estas intentando no es correcta, las cargas aceptadas son: (150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000)";
+        # echo "La carga que estas intentando no es correcta, las cargas aceptadas son: (150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000)";
         return false;
       }
     }
@@ -128,11 +128,6 @@ class Tarjeta{
 
     public function falsearTiempo(){
         $this->tiemporeal = false;
-    }
-
-    public function SetearTiempoFalsoTests(){
-      $this->tiemporeal = false;
-    }
 
 }
 

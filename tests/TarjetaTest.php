@@ -8,13 +8,13 @@ class TarjetaTest extends TestCase{
 
     public function testVerSaldo(){  
         $TarjetaVerSaldo = new Tarjeta(100);
-        $TarjetaVerSaldo->SetearTiempoFalsoTests();
+        $TarjetaVerSaldo->falsearTiempo();
         $this->assertEquals($TarjetaVerSaldo->verSaldo(), 100);
     }
 
-    public function testSetearTiempoFalsoTests(){
+    public function testFalsearTiempo(){
         $TarjetaSetearTiempoFalso = new Tarjeta();
-        $TarjetaSetearTiempoFalso->SetearTiempoFalsoTests();
+        $TarjetaSetearTiempoFalso->falsearTiempo();
         $this->assertFalse($TarjetaSetearTiempoFalso->tiemporeal);
     }
 
@@ -23,13 +23,13 @@ class TarjetaTest extends TestCase{
         
         for ($PosicionActual = 0; $PosicionActual < Count($ValoresPermitidosDeCarga); $PosicionActual++){
             $TarjetaAgregarSaldoPermitido = new Tarjeta();
-            $TarjetaAgregarSaldoPermitido->SetearTiempoFalsoTests();
+            $TarjetaAgregarSaldoPermitido->falsearTiempo();
 
             $this->assertTrue($TarjetaAgregarSaldoPermitido->agregarSaldo($ValoresPermitidosDeCarga[$PosicionActual]));
             $this->assertEquals($TarjetaAgregarSaldoPermitido->verSaldo(), $ValoresPermitidosDeCarga[$PosicionActual]);
         }
         $TarjetaAgregarSaldoNoPermitido = new Tarjeta(6000);
-        $TarjetaAgregarSaldoNoPermitido->SetearTiempoFalsoTests();
+        $TarjetaAgregarSaldoNoPermitido->falsearTiempo();
 
         $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(4000));
         $this->assertFalse($TarjetaAgregarSaldoNoPermitido->agregarSaldo(37));
@@ -37,7 +37,7 @@ class TarjetaTest extends TestCase{
 
     public function testCargaPendiente(){
         $TarjetaCargaPendiente = new Tarjeta(6000);
-        $TarjetaCargaPendiente->SetearTiempoFalsoTests();
+        $TarjetaCargaPendiente->falsearTiempo();
         $TarjetaCargaPendiente->agregarSaldo(800);
         $this->assertEquals($TarjetaCargaPendiente->verSaldo(),6600);
         $this->assertEquals($TarjetaCargaPendiente->cargaPendiente,200);
@@ -55,7 +55,7 @@ class TarjetaTest extends TestCase{
 
     public function testDescontarSaldo(){
         $TarjetaDescontarSaldo = new Tarjeta(120);
-        $TarjetaDescontarSaldo->SetearTiempoFalsoTests();
+        $TarjetaDescontarSaldo->falsearTiempo();
         $TarjetaDescontarSaldo->DescontarSaldo(120);
         $this->AssertEquals($TarjetaDescontarSaldo->verSaldo(),0);
 
@@ -66,7 +66,7 @@ class TarjetaTest extends TestCase{
 
     public function testUsoFrecuenteMensual(){
         $TarjetaUsoFrecuenteMensual = new Tarjeta(10000);
-        $TarjetaUsoFrecuenteMensual->SetearTiempoFalsoTests();
+        $TarjetaUsoFrecuenteMensual->falsearTiempo();
 
         $ColeUsoFrecuenteMensual = new Colectivo('102/144');
         

@@ -8,7 +8,7 @@ class ColectivoTest extends TestCase{
     
     public function testPagarConDinero() {
         $tarjetaConMenorValor = new Tarjeta();
-        $tarjetaConMenorValor->SetearTiempoFalsoTests();
+        $tarjetaConMenorValor->falsearTiempo();
 
         $colectivoUsadoParaLasDistintiasTarjetas = new Colectivo();
         
@@ -18,17 +18,17 @@ class ColectivoTest extends TestCase{
         $this->assertEquals($tarjetaConMenorValor->verSaldo(),-120);
         
         $tarjetaFranquiciaParcial = new FranquiciaParcial();
-        $tarjetaFranquiciaParcial->SetearTiempoFalsoTests();
+        $tarjetaFranquiciaParcial->falsearTiempo();
         $colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaFranquiciaParcial);
         $this->assertEquals($tarjetaFranquiciaParcial->verSaldo(),-60);
 
         $tarjetaFranquiciaCompletaJUB = new FranquiciaCompletaJUB();
-        $tarjetaFranquiciaCompletaJUB->SetearTiempoFalsoTests();
+        $tarjetaFranquiciaCompletaJUB->falsearTiempo();
         $colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaFranquiciaCompletaJUB);
         $this->assertEquals($tarjetaFranquiciaCompletaJUB->verSaldo(),0);
 
         $tarjetaFranquiciaCompletaBEG = new FranquiciaCompletaBEG();
-        $tarjetaFranquiciaCompletaBEG->SetearTiempoFalsoTests();
+        $tarjetaFranquiciaCompletaBEG->falsearTiempo();
         $colectivoUsadoParaLasDistintiasTarjetas->pagarCon($tarjetaFranquiciaCompletaBEG);
         $this->assertEquals($tarjetaFranquiciaCompletaBEG->verSaldo(),0);
     }
